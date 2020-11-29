@@ -86,6 +86,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Game.cpp">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Game.h">
+			<Option target="sudoku"/>
+		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp">
 			<Option target="sudoku"/>
 		</Unit>

@@ -5,12 +5,15 @@
 #include <iostream>
 #include "Texture.h"
 #include "Sudoku.h"
+#include "Game.h"
 
 using namespace std;
 
+const int MENU_NUMBERS = 4;
 const int SCREEN_WIDTH = 750;
 const int SCREEN_HEIGHT = 600;
-int SPLASH_DELAY = 1000;
+int SPLASH_DELAY = 2000;
+
 
 //Главное окно
 SDL_Window* mainWindow;
@@ -22,8 +25,6 @@ TTF_Font* font;
 int fontSize = 35;
 TTF_Font* bigFont;
 int bigFontSize = 100;
-
-Texture backgroundTexture;
 
 bool initialize() {
     if(SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
@@ -58,6 +59,8 @@ bool initialize() {
         return false;
     }
 
+    SDL_SetWindowTitle(mainWindow, "SUDOKU!");
+
     return true;
 }
 
@@ -75,29 +78,20 @@ void splashScreen() {
     splashTexture.height = SCREEN_HEIGHT;
     const char *name = "SUDOKU";
 
+    Texture myName;
+    myName.width = 500;
+    myName.height = 40;
+    const char *by = "made by alyonium";
+
     SDL_SetRenderDrawColor(gRenderer, 244, 143, 177, 255);
     SDL_RenderClear(gRenderer);
 
     renderText(splashTexture, bigFont, name, fontColor, (SCREEN_WIDTH  / 3), (SCREEN_HEIGHT  / 2) - (bigFontSize / 2));
+    renderText(myName, font, by, fontColor, (SCREEN_WIDTH  / 3) + 20, (SCREEN_HEIGHT - (bigFontSize / 2)));
 
     SDL_SetRenderTarget(gRenderer, NULL);
     SDL_RenderPresent(gRenderer);
     SDL_Delay(SPLASH_DELAY);
-}
-
-int setBackground(const string &file) {
-    SDL_Surface *image;
-
-    image = IMG_Load(file.c_str());
-
-    if (image == NULL) {
-        cout << IMG_GetError() << endl;
-        return -1;
-    }
-
-    backgroundTexture.width = image->w;
-    backgroundTexture.height = image->h;
-    backgroundTexture.texture = SDL_CreateTextureFromSurface(gRenderer, image);
 }
 
 void closeEverything() {
@@ -107,12 +101,130 @@ void closeEverything() {
     if (mainWindow != NULL)
         SDL_DestroyWindow(mainWindow);
 
-    if (backgroundTexture.texture != NULL)
-        SDL_DestroyTexture(backgroundTexture.texture);
 
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
+}
+
+int showMenu(SDL_Renderer *renderer) {
+    int x;
+    int y;
+    bool isMenu;
+    int width = SCREEN_WIDTH;
+    int height = SCREEN_HEIGHT;
+
+    const char *labels[MENU_NUMBERS] = { "Начать игру", "Правила", "Сменить фон", "Выход" };
+    SDL_Surface *menuTextTexture[MENU_NUMBERS];
+
+    bool hovered[MENU_NUMBERS] = {false, false, false, false};
+    bool selected[MENU_NUMBERS] = {false, false, false, false};
+
+    SDL_Color color[2] = {{255, 255, 255},
+                          {69,   60,   100}};
+
+    SDL_Rect pos[MENU_NUMBERS];
+
+    Game game(gRenderer);
+
+    for (int i = 0; i < MENU_NUMBERS; ++i) {
+        menuTextTexture[i] = TTF_RenderUTF8_Blended(font, labels[i], color[0]);
+        pos[i].x = SCREEN_WIDTH / 3;
+        pos[i].y = (SCREEN_HEIGHT / 3) + i * 60;
+        pos[i].w = menuTextTexture[i]->clip_rect.w;
+        pos[i].h = menuTextTexture[i]->clip_rect.h;
+    }
+
+    SDL_Event event;
+    while (1) {
+        switch (event.type) {
+            case SDL_QUIT:
+                for (int i = 0; i < MENU_NUMBERS; ++i) {
+                    SDL_FreeSurface(menuTextTexture[i]);
+                }
+                closeEverything();
+                return 1;
+        }
+
+        for (int i = 0; i < MENU_NUMBERS; ++i) {
+            if (selected[i] && i == 0) { //запуск игры
+                game.handleEvent(&event, &selected[i], font);
+                break;
+            }
+        }
+
+        isMenu = true;
+
+        for(int i = 0; i< MENU_NUMBERS; ++i) {
+            if(selected[i]) {
+                isMenu = false;
+                break;
+            }
+        }
+
+        if(!isMenu){
+            continue;
+        }
+
+        while (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_MOUSEMOTION:
+                    x = event.motion.x;
+                    y = event.motion.y;
+                    for (int i = 0; i < MENU_NUMBERS; i++) {
+                        if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
+                            y >= pos[i].y && y <= pos[i].y + pos[i].h) {
+                            if (!hovered[i]) {
+                                hovered[i] = true;
+                                SDL_FreeSurface(menuTextTexture[i]);
+                                menuTextTexture[i] = TTF_RenderUTF8_Blended(font, labels[i], color[1]);
+                            }
+                        } else if (hovered[i]) {
+                            hovered[i] = false;
+                            SDL_FreeSurface(menuTextTexture[i]);
+                            menuTextTexture[i] = TTF_RenderUTF8_Blended(font, labels[i], color[0]);
+                        }
+                    }
+                    break;
+
+                case SDL_MOUSEBUTTONDOWN:
+                    x = event.button.x;
+                    y = event.button.y;
+                    for (int i = 0; i < MENU_NUMBERS; i += 1) {
+                        if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
+                            y >= pos[i].y && y <= pos[i].y + pos[i].h) {
+                            selected[i] = true;
+                        }
+                    }
+                    break;
+
+                case SDL_KEYDOWN:
+                    if (event.key.keysym.sym == SDLK_ESCAPE) {
+                        for (int i = 0; i < MENU_NUMBERS; ++i) {
+                            SDL_FreeSurface(menuTextTexture[i]);
+                        }
+                        closeEverything();
+                        return 1;
+                    }
+            }
+        }
+
+
+
+        SDL_SetRenderDrawColor(renderer, 209, 196, 233, 255);
+        SDL_RenderClear(renderer);
+
+        for (int i = 0; i < MENU_NUMBERS; i++) {
+            Texture menuItemTexture;
+            menuItemTexture.texture = SDL_CreateTextureFromSurface(renderer, menuTextTexture[i]);
+            menuItemTexture.width = width;
+            menuItemTexture.height = height;
+            SDL_QueryTexture(menuItemTexture.texture, NULL, NULL, &menuItemTexture.width, &menuItemTexture.height);
+            SDL_Rect rectGroup = { pos[i].x, pos[i].y, menuItemTexture.width, menuItemTexture.height };
+            SDL_RenderCopy(renderer, menuItemTexture.texture, NULL, &rectGroup);
+        }
+        SDL_RenderPresent(gRenderer);
+    }
 }
 
 int main( int argc, char* args[] ) {
@@ -121,39 +233,13 @@ int main( int argc, char* args[] ) {
         return -1;
     }
 
-    SDL_SetWindowTitle(mainWindow, "SUDOKU!");
-    Sudoku sudoku(gRenderer, font);
-
-    bool quit = false;
     SDL_Event event;
-    bool splash = true;
-
-    while (!quit) {
-        while (SDL_PollEvent(&event) != 0) {
-            if (event.type == SDL_QUIT) {
-                quit = true;
-            }
-            setBackground("img/japan.png");
-
-            while(splash) {
-                splashScreen();
-                splash = !splash;
-            }
-
-            SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
-            SDL_RenderClear(gRenderer);
-
-            SDL_Rect rect = {0, 0, backgroundTexture.width, backgroundTexture.height};
-            SDL_RenderCopy (gRenderer, backgroundTexture.texture, NULL, &rect);
-
-            sudoku.draw(event);
-
-            SDL_SetRenderTarget(gRenderer, NULL);
-            SDL_RenderPresent(gRenderer);
-
-            SDL_RenderPresent(gRenderer);
-        }
+    while (SDL_PollEvent(&event) != 0) {
+        splashScreen();
+        break;
     }
+
+    showMenu(gRenderer);
 
     closeEverything();
     SDL_DestroyWindow(mainWindow);

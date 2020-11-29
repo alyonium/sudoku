@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/alyonium/Desktop/newSudoku/src/Game.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/Game.cpp.o"
   "/Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/Sudoku.cpp.o"
   "/Users/alyonium/Desktop/newSudoku/src/main.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/main.cpp.o"
   )

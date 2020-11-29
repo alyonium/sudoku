@@ -6,17 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp
+/Users/alyonium/Desktop/newSudoku/src/Game.h
 SDL.h
--
-SDL_image.h
--
-SDL_ttf.h
--
-string
 -
 Sudoku.h
 /Users/alyonium/Desktop/newSudoku/src/Sudoku.h
+string
+-
 Texture.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
 
@@ -29,6 +25,24 @@ SDL_ttf.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
 SDL.h
 -
+
+/Users/alyonium/Desktop/newSudoku/src/main.cpp
+SDL.h
+-
+SDL_image.h
+-
+SDL_ttf.h
+-
+string
+-
+iostream
+-
+Texture.h
+/Users/alyonium/Desktop/newSudoku/src/Texture.h
+Sudoku.h
+/Users/alyonium/Desktop/newSudoku/src/Sudoku.h
+Game.h
+/Users/alyonium/Desktop/newSudoku/src/Game.h
 
 /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 SDL_main.h

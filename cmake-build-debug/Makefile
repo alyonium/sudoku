@@ -143,6 +143,33 @@ sudoku/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/build
 .PHONY : sudoku/fast
 
+src/Game.o: src/Game.cpp.o
+
+.PHONY : src/Game.o
+
+# target to build an object file
+src/Game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Game.cpp.o
+.PHONY : src/Game.cpp.o
+
+src/Game.i: src/Game.cpp.i
+
+.PHONY : src/Game.i
+
+# target to preprocess a source file
+src/Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Game.cpp.i
+.PHONY : src/Game.cpp.i
+
+src/Game.s: src/Game.cpp.s
+
+.PHONY : src/Game.s
+
+# target to generate assembly for a file
+src/Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Game.cpp.s
+.PHONY : src/Game.cpp.s
+
 src/Sudoku.o: src/Sudoku.cpp.o
 
 .PHONY : src/Sudoku.o
@@ -206,6 +233,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... sudoku"
+	@echo "... src/Game.o"
+	@echo "... src/Game.i"
+	@echo "... src/Game.s"
 	@echo "... src/Sudoku.o"
 	@echo "... src/Sudoku.i"
 	@echo "... src/Sudoku.s"
