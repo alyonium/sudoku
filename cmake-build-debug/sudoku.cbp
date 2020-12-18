@@ -92,6 +92,12 @@
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Background.h">
 			<Option target="sudoku"/>
 		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Control.cpp">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Control.h">
+			<Option target="sudoku"/>
+		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Game.cpp">
 			<Option target="sudoku"/>
 		</Unit>
@@ -102,6 +108,12 @@
 			<Option target="sudoku"/>
 		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Rules.cpp">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Rules.h">
 			<Option target="sudoku"/>
 		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp">

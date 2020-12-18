@@ -90,9 +90,22 @@ CMakeFiles/sudoku.dir/src/Background.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sudoku.dir/src/Background.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alyonium/Desktop/newSudoku/src/Background.cpp -o CMakeFiles/sudoku.dir/src/Background.cpp.s
 
+CMakeFiles/sudoku.dir/src/Control.cpp.o: CMakeFiles/sudoku.dir/flags.make
+CMakeFiles/sudoku.dir/src/Control.cpp.o: ../src/Control.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sudoku.dir/src/Control.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sudoku.dir/src/Control.cpp.o -c /Users/alyonium/Desktop/newSudoku/src/Control.cpp
+
+CMakeFiles/sudoku.dir/src/Control.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sudoku.dir/src/Control.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alyonium/Desktop/newSudoku/src/Control.cpp > CMakeFiles/sudoku.dir/src/Control.cpp.i
+
+CMakeFiles/sudoku.dir/src/Control.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sudoku.dir/src/Control.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alyonium/Desktop/newSudoku/src/Control.cpp -o CMakeFiles/sudoku.dir/src/Control.cpp.s
+
 CMakeFiles/sudoku.dir/src/Game.cpp.o: CMakeFiles/sudoku.dir/flags.make
 CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Game.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sudoku.dir/src/Game.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sudoku.dir/src/Game.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sudoku.dir/src/Game.cpp.o -c /Users/alyonium/Desktop/newSudoku/src/Game.cpp
 
 CMakeFiles/sudoku.dir/src/Game.cpp.i: cmake_force
@@ -105,7 +118,7 @@ CMakeFiles/sudoku.dir/src/Game.cpp.s: cmake_force
 
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: CMakeFiles/sudoku.dir/flags.make
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: ../src/GlobalVariables.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o -c /Users/alyonium/Desktop/newSudoku/src/GlobalVariables.cpp
 
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.i: cmake_force
@@ -116,9 +129,22 @@ CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alyonium/Desktop/newSudoku/src/GlobalVariables.cpp -o CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.s
 
+CMakeFiles/sudoku.dir/src/Rules.cpp.o: CMakeFiles/sudoku.dir/flags.make
+CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/Rules.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sudoku.dir/src/Rules.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sudoku.dir/src/Rules.cpp.o -c /Users/alyonium/Desktop/newSudoku/src/Rules.cpp
+
+CMakeFiles/sudoku.dir/src/Rules.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sudoku.dir/src/Rules.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alyonium/Desktop/newSudoku/src/Rules.cpp > CMakeFiles/sudoku.dir/src/Rules.cpp.i
+
+CMakeFiles/sudoku.dir/src/Rules.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sudoku.dir/src/Rules.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alyonium/Desktop/newSudoku/src/Rules.cpp -o CMakeFiles/sudoku.dir/src/Rules.cpp.s
+
 CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: CMakeFiles/sudoku.dir/flags.make
 CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: ../src/Sudoku.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sudoku.dir/src/Sudoku.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sudoku.dir/src/Sudoku.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sudoku.dir/src/Sudoku.cpp.o -c /Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp
 
 CMakeFiles/sudoku.dir/src/Sudoku.cpp.i: cmake_force
@@ -131,7 +157,7 @@ CMakeFiles/sudoku.dir/src/Sudoku.cpp.s: cmake_force
 
 CMakeFiles/sudoku.dir/src/main.cpp.o: CMakeFiles/sudoku.dir/flags.make
 CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sudoku.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/sudoku.dir/src/main.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sudoku.dir/src/main.cpp.o -c /Users/alyonium/Desktop/newSudoku/src/main.cpp
 
 CMakeFiles/sudoku.dir/src/main.cpp.i: cmake_force
@@ -145,8 +171,10 @@ CMakeFiles/sudoku.dir/src/main.cpp.s: cmake_force
 # Object files for target sudoku
 sudoku_OBJECTS = \
 "CMakeFiles/sudoku.dir/src/Background.cpp.o" \
+"CMakeFiles/sudoku.dir/src/Control.cpp.o" \
 "CMakeFiles/sudoku.dir/src/Game.cpp.o" \
 "CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o" \
+"CMakeFiles/sudoku.dir/src/Rules.cpp.o" \
 "CMakeFiles/sudoku.dir/src/Sudoku.cpp.o" \
 "CMakeFiles/sudoku.dir/src/main.cpp.o"
 
@@ -154,15 +182,17 @@ sudoku_OBJECTS = \
 sudoku_EXTERNAL_OBJECTS =
 
 sudoku: CMakeFiles/sudoku.dir/src/Background.cpp.o
+sudoku: CMakeFiles/sudoku.dir/src/Control.cpp.o
 sudoku: CMakeFiles/sudoku.dir/src/Game.cpp.o
 sudoku: CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o
+sudoku: CMakeFiles/sudoku.dir/src/Rules.cpp.o
 sudoku: CMakeFiles/sudoku.dir/src/Sudoku.cpp.o
 sudoku: CMakeFiles/sudoku.dir/src/main.cpp.o
 sudoku: CMakeFiles/sudoku.dir/build.make
 sudoku: /usr/local/lib/libSDL2_image.dylib
 sudoku: /usr/local/lib/libSDL2_ttf.dylib
 sudoku: CMakeFiles/sudoku.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable sudoku"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable sudoku"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sudoku.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

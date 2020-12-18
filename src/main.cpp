@@ -7,6 +7,8 @@
 #include "Sudoku.h"
 #include "Game.h"
 #include "GlobalVariables.h"
+#include "Rules.h"
+#include "Control.h"
 
 using namespace std;
 
@@ -14,7 +16,7 @@ SDL_Window* mainWindow;
 
 int SPLASH_DELAY = 500;
 
-const int MENU_NUMBERS = 3;
+const int MENU_NUMBERS = 4;
 
 bool initialize() {
     if(SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
@@ -103,11 +105,11 @@ int showMenu(SDL_Renderer *renderer) {
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 
-    const char *labels[MENU_NUMBERS] = { "Начать игру", "Правила", "Выход" };
+    const char *labels[MENU_NUMBERS] = { "Начать игру", "Правила", "Управление", "Выход" };
     SDL_Surface *menuTextTexture[MENU_NUMBERS];
 
-    bool hovered[MENU_NUMBERS] = {false, false, false};
-    bool selected[MENU_NUMBERS] = {false, false, false};
+    bool hovered[MENU_NUMBERS] = {false, false, false, false};
+    bool selected[MENU_NUMBERS] = {false, false, false, false};
 
     SDL_Color color[2] = {menuColor, menuColorHover};
 
@@ -140,7 +142,19 @@ int showMenu(SDL_Renderer *renderer) {
                 break;
             }
 
-            if (selected[i] && i == 2) { //выход из игры
+            if (selected[i] && i == 1) { //запуск игры
+                Rules rules;
+                rules.handleEvent(&event, &selected[i]);
+                break;
+            }
+
+            if (selected[i] && i == 2) { //запуск игры
+                Control control;
+                control.handleEvent(&event, &selected[i]);
+                break;
+            }
+
+            if (selected[i] && i == 3) { //выход из игры
                 for (int i = 0; i < MENU_NUMBERS; ++i) {
                     SDL_FreeSurface(menuTextTexture[i]);
                 }

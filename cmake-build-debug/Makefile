@@ -170,6 +170,33 @@ src/Background.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Background.cpp.s
 .PHONY : src/Background.cpp.s
 
+src/Control.o: src/Control.cpp.o
+
+.PHONY : src/Control.o
+
+# target to build an object file
+src/Control.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Control.cpp.o
+.PHONY : src/Control.cpp.o
+
+src/Control.i: src/Control.cpp.i
+
+.PHONY : src/Control.i
+
+# target to preprocess a source file
+src/Control.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Control.cpp.i
+.PHONY : src/Control.cpp.i
+
+src/Control.s: src/Control.cpp.s
+
+.PHONY : src/Control.s
+
+# target to generate assembly for a file
+src/Control.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Control.cpp.s
+.PHONY : src/Control.cpp.s
+
 src/Game.o: src/Game.cpp.o
 
 .PHONY : src/Game.o
@@ -223,6 +250,33 @@ src/GlobalVariables.s: src/GlobalVariables.cpp.s
 src/GlobalVariables.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.s
 .PHONY : src/GlobalVariables.cpp.s
+
+src/Rules.o: src/Rules.cpp.o
+
+.PHONY : src/Rules.o
+
+# target to build an object file
+src/Rules.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Rules.cpp.o
+.PHONY : src/Rules.cpp.o
+
+src/Rules.i: src/Rules.cpp.i
+
+.PHONY : src/Rules.i
+
+# target to preprocess a source file
+src/Rules.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Rules.cpp.i
+.PHONY : src/Rules.cpp.i
+
+src/Rules.s: src/Rules.cpp.s
+
+.PHONY : src/Rules.s
+
+# target to generate assembly for a file
+src/Rules.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Rules.cpp.s
+.PHONY : src/Rules.cpp.s
 
 src/Sudoku.o: src/Sudoku.cpp.o
 
@@ -290,12 +344,18 @@ help:
 	@echo "... src/Background.o"
 	@echo "... src/Background.i"
 	@echo "... src/Background.s"
+	@echo "... src/Control.o"
+	@echo "... src/Control.i"
+	@echo "... src/Control.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
 	@echo "... src/GlobalVariables.o"
 	@echo "... src/GlobalVariables.i"
 	@echo "... src/GlobalVariables.s"
+	@echo "... src/Rules.o"
+	@echo "... src/Rules.i"
+	@echo "... src/Rules.s"
 	@echo "... src/Sudoku.o"
 	@echo "... src/Sudoku.i"
 	@echo "... src/Sudoku.s"

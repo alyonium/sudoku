@@ -14,3 +14,4 @@ TTF_Font* bigFont;
 
 int fontSize = 35;
 int bigFontSize = 100;
+
