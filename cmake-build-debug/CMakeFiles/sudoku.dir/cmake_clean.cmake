@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/sudoku.dir/src/Background.cpp.o"
   "CMakeFiles/sudoku.dir/src/Game.cpp.o"
+  "CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o"
   "CMakeFiles/sudoku.dir/src/Sudoku.cpp.o"
   "CMakeFiles/sudoku.dir/src/main.cpp.o"
   "sudoku"

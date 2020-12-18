@@ -2,14 +2,16 @@
 #include "Sudoku.h"
 #include <string>
 #include "Texture.h"
+#include "GlobalVariables.h"
 
 #ifndef SUDOKU_GAME_H
 #define SUDOKU_GAME_H
 class Game {
-    SDL_Renderer *gRenderer;
+    Sudoku sudoku = Sudoku(gRenderer, font);
+    Texture backgroundTexture;
 public:
-    Game(SDL_Renderer *gRenderer);
-    void setBackground(const std::string &file, Texture *backgroundTexture);
-    void handleEvent(SDL_Event *event, bool *isScene, TTF_Font *font);
+    Game();
+    void setBackground(const std::string &file);
+    void handleEvent(SDL_Event *event, bool *isScene);
 };
 #endif

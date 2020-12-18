@@ -143,6 +143,33 @@ sudoku/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/build
 .PHONY : sudoku/fast
 
+src/Background.o: src/Background.cpp.o
+
+.PHONY : src/Background.o
+
+# target to build an object file
+src/Background.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Background.cpp.o
+.PHONY : src/Background.cpp.o
+
+src/Background.i: src/Background.cpp.i
+
+.PHONY : src/Background.i
+
+# target to preprocess a source file
+src/Background.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Background.cpp.i
+.PHONY : src/Background.cpp.i
+
+src/Background.s: src/Background.cpp.s
+
+.PHONY : src/Background.s
+
+# target to generate assembly for a file
+src/Background.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Background.cpp.s
+.PHONY : src/Background.cpp.s
+
 src/Game.o: src/Game.cpp.o
 
 .PHONY : src/Game.o
@@ -169,6 +196,33 @@ src/Game.s: src/Game.cpp.s
 src/Game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Game.cpp.s
 .PHONY : src/Game.cpp.s
+
+src/GlobalVariables.o: src/GlobalVariables.cpp.o
+
+.PHONY : src/GlobalVariables.o
+
+# target to build an object file
+src/GlobalVariables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o
+.PHONY : src/GlobalVariables.cpp.o
+
+src/GlobalVariables.i: src/GlobalVariables.cpp.i
+
+.PHONY : src/GlobalVariables.i
+
+# target to preprocess a source file
+src/GlobalVariables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.i
+.PHONY : src/GlobalVariables.cpp.i
+
+src/GlobalVariables.s: src/GlobalVariables.cpp.s
+
+.PHONY : src/GlobalVariables.s
+
+# target to generate assembly for a file
+src/GlobalVariables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.s
+.PHONY : src/GlobalVariables.cpp.s
 
 src/Sudoku.o: src/Sudoku.cpp.o
 
@@ -233,9 +287,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... sudoku"
+	@echo "... src/Background.o"
+	@echo "... src/Background.i"
+	@echo "... src/Background.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
+	@echo "... src/GlobalVariables.o"
+	@echo "... src/GlobalVariables.i"
+	@echo "... src/GlobalVariables.s"
 	@echo "... src/Sudoku.o"
 	@echo "... src/Sudoku.i"
 	@echo "... src/Sudoku.s"

@@ -6,25 +6,15 @@
 #include "Texture.h"
 #include "Sudoku.h"
 #include "Game.h"
+#include "GlobalVariables.h"
 
 using namespace std;
 
-const int MENU_NUMBERS = 4;
-const int SCREEN_WIDTH = 750;
-const int SCREEN_HEIGHT = 600;
-int SPLASH_DELAY = 2000;
-
-
-//Главное окно
 SDL_Window* mainWindow;
 
-//Поверхности, накладываемые на главное окно
-SDL_Renderer* gRenderer;
-SDL_Color fontColor = {30, 50, 56};
-TTF_Font* font;
-int fontSize = 35;
-TTF_Font* bigFont;
-int bigFontSize = 100;
+int SPLASH_DELAY = 500;
+
+const int MENU_NUMBERS = 3;
 
 bool initialize() {
     if(SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
@@ -101,7 +91,6 @@ void closeEverything() {
     if (mainWindow != NULL)
         SDL_DestroyWindow(mainWindow);
 
-
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
@@ -114,18 +103,17 @@ int showMenu(SDL_Renderer *renderer) {
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 
-    const char *labels[MENU_NUMBERS] = { "Начать игру", "Правила", "Сменить фон", "Выход" };
+    const char *labels[MENU_NUMBERS] = { "Начать игру", "Правила", "Выход" };
     SDL_Surface *menuTextTexture[MENU_NUMBERS];
 
-    bool hovered[MENU_NUMBERS] = {false, false, false, false};
-    bool selected[MENU_NUMBERS] = {false, false, false, false};
+    bool hovered[MENU_NUMBERS] = {false, false, false};
+    bool selected[MENU_NUMBERS] = {false, false, false};
 
-    SDL_Color color[2] = {{255, 255, 255},
-                          {69,   60,   100}};
+    SDL_Color color[2] = {menuColor, menuColorHover};
 
     SDL_Rect pos[MENU_NUMBERS];
 
-    Game game(gRenderer);
+    Game game;
 
     for (int i = 0; i < MENU_NUMBERS; ++i) {
         menuTextTexture[i] = TTF_RenderUTF8_Blended(font, labels[i], color[0]);
@@ -148,8 +136,16 @@ int showMenu(SDL_Renderer *renderer) {
 
         for (int i = 0; i < MENU_NUMBERS; ++i) {
             if (selected[i] && i == 0) { //запуск игры
-                game.handleEvent(&event, &selected[i], font);
+                game.handleEvent(&event, &selected[i]);
                 break;
+            }
+
+            if (selected[i] && i == 2) { //выход из игры
+                for (int i = 0; i < MENU_NUMBERS; ++i) {
+                    SDL_FreeSurface(menuTextTexture[i]);
+                }
+                closeEverything();
+                return 1;
             }
         }
 
@@ -161,6 +157,8 @@ int showMenu(SDL_Renderer *renderer) {
                 break;
             }
         }
+
+        SDL_RenderPresent(gRenderer);
 
         if(!isMenu){
             continue;
@@ -209,21 +207,20 @@ int showMenu(SDL_Renderer *renderer) {
             }
         }
 
-
-
         SDL_SetRenderDrawColor(renderer, 209, 196, 233, 255);
         SDL_RenderClear(renderer);
 
         for (int i = 0; i < MENU_NUMBERS; i++) {
             Texture menuItemTexture;
+
             menuItemTexture.texture = SDL_CreateTextureFromSurface(renderer, menuTextTexture[i]);
             menuItemTexture.width = width;
             menuItemTexture.height = height;
+
             SDL_QueryTexture(menuItemTexture.texture, NULL, NULL, &menuItemTexture.width, &menuItemTexture.height);
             SDL_Rect rectGroup = { pos[i].x, pos[i].y, menuItemTexture.width, menuItemTexture.height };
             SDL_RenderCopy(renderer, menuItemTexture.texture, NULL, &rectGroup);
         }
-        SDL_RenderPresent(gRenderer);
     }
 }
 

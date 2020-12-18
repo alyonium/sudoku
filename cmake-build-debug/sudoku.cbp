@@ -86,10 +86,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Background.cpp">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Background.h">
+			<Option target="sudoku"/>
+		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Game.cpp">
 			<Option target="sudoku"/>
 		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Game.h">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.cpp">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h">
 			<Option target="sudoku"/>
 		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp">
