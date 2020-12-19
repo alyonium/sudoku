@@ -3,6 +3,7 @@
 #include "GlobalVariables.h"
 #include "SDL_ttf.h"
 #include <string>
+#include <SDL_image.h>
 
 void Background::renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font *font) {
     int width = SCREEN_WIDTH, height = SCREEN_HEIGHT;
@@ -19,46 +20,29 @@ void Background::handleEvent(SDL_Event *e){
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 
-    const char *labels[4] = { "Осень", "Сакура", "Токио", "Фудзияма" };
-    SDL_Surface *menuTextTexture[4];
+    const char *labels[4] = { "img/autumnSmall.jpg", "img/sakuraSmall.jpg", "img/tokyoSmall.jpg", "img/fujiyamaSmall.jpg" };
+    SDL_Surface *menuTexture[4];
 
-    bool hovered[4] = {false, false, false, false};
     bool selected[4] = {false, false, false, false};
-
-    SDL_Color color[2] = {menuColor, menuColorHover};
 
     SDL_Rect pos[4];
 
     for (int i = 0; i < 4; ++i) {
-        menuTextTexture[i] = TTF_RenderUTF8_Blended(font, labels[i], color[0]);
-        pos[i].x = SCREEN_WIDTH / 3;
-        pos[i].y = (SCREEN_HEIGHT / 3) + i * 60;
-        pos[i].w = menuTextTexture[i]->clip_rect.w;
-        pos[i].h = menuTextTexture[i]->clip_rect.h;
+        menuTexture[i] = IMG_Load(labels[i]);
+
+        pos[i].x = SCREEN_WIDTH / 4;
+        pos[i].y = (SCREEN_HEIGHT / 4) + i * 60;
+        pos[i].w = menuTexture[i]->w;
+        pos[i].h = menuTexture[i]->h;
+
+        SDL_CreateTextureFromSurface(gRenderer, menuTexture[i]);
     }
+
 
     int x;
     int y;
 
     switch (e->type) {
-        case SDL_MOUSEMOTION:
-            x = e->motion.x;
-            y = e->motion.y;
-            for (int i = 0; i < 4; i++) {
-                if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
-                    y >= pos[i].y && y <= pos[i].y + pos[i].h) {
-                    if (!hovered[i]) {
-                        hovered[i] = true;
-                        SDL_FreeSurface(menuTextTexture[i]);
-                        menuTextTexture[i] = TTF_RenderUTF8_Blended(font, labels[i], color[1]);
-                    }
-                } else if (hovered[i]) {
-                    hovered[i] = false;
-                    SDL_FreeSurface(menuTextTexture[i]);
-                    menuTextTexture[i] = TTF_RenderUTF8_Blended(font, labels[i], color[0]);
-                }
-            }
-            break;
 
         case SDL_MOUSEBUTTONDOWN:
 
@@ -89,7 +73,7 @@ void Background::handleEvent(SDL_Event *e){
     for (int i = 0; i < 4; i++) {
         Texture menuItemTexture;
 
-        menuItemTexture.texture = SDL_CreateTextureFromSurface(gRenderer, menuTextTexture[i]);
+        menuItemTexture.texture = SDL_CreateTextureFromSurface(gRenderer, menuTexture[i]);
         menuItemTexture.width = width;
         menuItemTexture.height = height;
 

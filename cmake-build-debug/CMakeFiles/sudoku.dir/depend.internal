@@ -52,6 +52,7 @@ CMakeFiles/sudoku.dir/src/Background.cpp.o
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_video.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/begin_code.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
+ /usr/local/include/SDL2/SDL_image.h
  /usr/local/include/SDL2/SDL_ttf.h
 CMakeFiles/sudoku.dir/src/Control.cpp.o
  /Users/alyonium/Desktop/newSudoku/src/Control.cpp
@@ -314,6 +315,7 @@ CMakeFiles/sudoku.dir/src/Sudoku.cpp.o
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
  /usr/local/include/SDL2/SDL_ttf.h
 CMakeFiles/sudoku.dir/src/main.cpp.o
+ /Users/alyonium/Desktop/newSudoku/src/Background.h
  /Users/alyonium/Desktop/newSudoku/src/Control.h
  /Users/alyonium/Desktop/newSudoku/src/Game.h
  /Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h

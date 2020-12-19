@@ -11,10 +11,19 @@ Game::Game() {
     sudoku.readScheme();
 }
 
-void Game::setBackground(const std::string &file) {
+void Game::setBackground() {
     SDL_Surface *image;
+    if (pictureName == TOKYO) {
+        image = IMG_Load("img/tokyo.jpg");
+    } else if (pictureName == AUTUMN) {
+        image = IMG_Load("img/autumn.jpg");
+    } else if (pictureName == SAKURA) {
+        image = IMG_Load("img/sakura.jpg");
+    } else if (pictureName == FUJIYAMA) {
+        image = IMG_Load("img/fujiyama.jpg");
+    }
 
-    image = IMG_Load(file.c_str());
+
 
     backgroundTexture.width = image->w;
     backgroundTexture.height = image->h;
@@ -33,19 +42,8 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
             }
 
             if (type == BACKGROUND) {
-                Background background;
                 background.handleEvent(event);
-
-                if (pictureName == TOKYO) {
-                    setBackground("img/tokyo.jpg");
-                } else if (pictureName == AUTUMN) {
-                    setBackground("img/autumn.jpg");
-                } else if (pictureName == SAKURA) {
-                    setBackground("img/sakura.jpg");
-                } else if (pictureName == FUJIYAMA) {
-                    setBackground("img/fujiyama.jpg");
-                }
-
+                setBackground();
             }
 
             if (type == LEVEL) {
