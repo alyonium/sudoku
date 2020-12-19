@@ -3,6 +3,8 @@
 #include <string>
 #include "Sudoku.h"
 #include "Texture.h"
+#include <iostream>
+#include <fstream>
 
 SDL_Texture* gTexture;
 
@@ -123,7 +125,6 @@ int selectedX = 0;
 int selectedY = 0;
 
 const int CELL_SIZE = 50;
-
 
 void drawGrid(SDL_Renderer *gRenderer) {
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
@@ -338,6 +339,7 @@ Sudoku::Sudoku(SDL_Renderer *gRenderer, TTF_Font *font) {
     for (int i = 0; i < 9; i++) {
         areaBoxes[i].init(BOX, i);
     }
+
 }
 
 void Sudoku::draw(SDL_Event event) {
@@ -347,10 +349,70 @@ void Sudoku::draw(SDL_Event event) {
     drawInvalidCells(gRenderer);
     drawSelection(gRenderer);
     drawDigit(gRenderer);
+
     SDL_SetRenderTarget(gRenderer, NULL);
 
     int size = 9 * CELL_SIZE + 4;
 
     SDL_Rect fieldRect = {(750 - size) / 2, (600 - size) / 2, size, size};
     SDL_RenderCopy(gRenderer, gTexture, NULL, &fieldRect);
+}
+
+void Sudoku::readScheme() {
+    std::ifstream in("schemes/low.txt");
+
+    if (in.is_open()) {
+        //Если открытие файла прошло успешно
+
+        //Вначале посчитаем сколько чисел в файле
+        int count = 0;// число чисел в файле
+        int temp;//Временная переменная
+
+        while (!in.eof()) {
+            in >> temp;//в пустоту считываем из файла числа
+            count++;// увеличиваем счетчик числа чисел
+        }
+
+        //Число чисел посчитано, теперь нам нужно понять сколько
+        //чисел в одной строке
+        //Для этого посчитаем число пробелов до знака перевода на новую строку
+
+        //Вначале переведем каретку в потоке в начало файла
+        in.seekg(0, std::ios::beg);
+        in.clear();
+
+        //Число пробелов в первой строчке вначале равно 0
+        int count_space = 0;
+        char symbol;
+        while (!in.eof()) {
+            //теперь нам нужно считывать не числа, а посимвольно считывать данные
+            in.get(symbol);//считали текущий символ
+            if (symbol == ' ') count_space++;//Если это пробел, то число пробелов увеличиваем
+            if (symbol == '\n') break;//Если дошли до конца строки, то выходим из цикла
+        }
+
+        //Опять переходим в потоке в начало файла
+        in.seekg(0, std::ios::beg);
+        in.clear();
+
+        //Теперь мы знаем сколько чисел в файле и сколько пробелов в первой строке.
+        //Теперь можем считать матрицу.
+        //Считаем матрицу из файла
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                in >> fullField[i][j];
+            }
+        }
+
+        //Выведем матрицу
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++)
+                std::cout << fullField[i][j] << "\t";
+            std::cout << "\n";
+        }
+
+        in.close();//под конец закроем файла
+    } else {
+        std::cout << "Файл не найден.";
+    }
 }

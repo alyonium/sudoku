@@ -19,4 +19,21 @@ extern TTF_Font* bigFont;
 extern int fontSize;
 extern int bigFontSize;
 
+extern enum StepType {
+    BACKGROUND,
+    LEVEL,
+    SUDOKU
+};
+
+extern StepType type;
+
+extern enum PictureNames {
+    AUTUMN,
+    FUJIYAMA,
+    TOKYO,
+    SAKURA,
+};
+
+extern PictureNames pictureName;
+
 #endif

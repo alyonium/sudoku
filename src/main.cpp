@@ -142,13 +142,13 @@ int showMenu(SDL_Renderer *renderer) {
                 break;
             }
 
-            if (selected[i] && i == 1) { //запуск игры
+            if (selected[i] && i == 1) { //правила
                 Rules rules;
                 rules.handleEvent(&event, &selected[i]);
                 break;
             }
 
-            if (selected[i] && i == 2) { //запуск игры
+            if (selected[i] && i == 2) { //управление
                 Control control;
                 control.handleEvent(&event, &selected[i]);
                 break;

@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/alyonium/Desktop/newSudoku/src/Control.cpp
-Control.h
-/Users/alyonium/Desktop/newSudoku/src/Control.h
+/Users/alyonium/Desktop/newSudoku/src/Background.cpp
+Background.h
+/Users/alyonium/Desktop/newSudoku/src/Background.h
 SDL.h
 /Users/alyonium/Desktop/newSudoku/src/SDL.h
 GlobalVariables.h
@@ -18,7 +18,7 @@ SDL_ttf.h
 string
 -
 
-/Users/alyonium/Desktop/newSudoku/src/Control.h
+/Users/alyonium/Desktop/newSudoku/src/Background.h
 SDL.h
 /Users/alyonium/Desktop/newSudoku/src/SDL.h
 SDL_ttf.h

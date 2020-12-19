@@ -37,17 +37,5 @@ void Rules::handleEvent(SDL_Event *e, bool *isScene){
 
     renderText("цифра встречается только один раз.", fontColor, 110, SCREEN_HEIGHT / 4 + 250, font);
 
-//    renderText("Для перемещения по игровому полю используйте", fontColor, 10, 320, font);
-//
-//    renderText("клавиши со стрелками. Для заполнения ячеек", fontColor, 10, 380, font);
-//
-//    renderText("используйте клавиши с цифрами. Для удаления цифры", fontColor, 10, 430, font);
-//
-//    renderText("из ячейки используйте клавишу delete. Если вы", fontColor, 10, 480, font);
-//
-//    renderText("введете цифру, не соответствующую решению, она",fontColor, 10, 530, font);
-//
-//    renderText("подсветится красным.",fontColor, 10, 580, font);
-
     SDL_RenderPresent(gRenderer);
 }

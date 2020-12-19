@@ -4,9 +4,11 @@
 #include "Sudoku.h"
 #include "Texture.h"
 #include "GlobalVariables.h"
+#include <iostream>
+#include "Background.h"
 
 Game::Game() {
-    setBackground("img/japan-0.jpg");
+    sudoku.readScheme();
 }
 
 void Game::setBackground(const std::string &file) {
@@ -30,11 +32,33 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
                 break;
             }
 
-            SDL_RenderClear(gRenderer);
+            if (type == BACKGROUND) {
+                Background background;
+                background.handleEvent(event);
 
-            SDL_Rect rect = {0, 0, backgroundTexture.width, backgroundTexture.height};
-            SDL_RenderCopy(gRenderer, backgroundTexture.texture, NULL, &rect);
+                if (pictureName == TOKYO) {
+                    setBackground("img/tokyo.jpg");
+                } else if (pictureName == AUTUMN) {
+                    setBackground("img/autumn.jpg");
+                } else if (pictureName == SAKURA) {
+                    setBackground("img/sakura.jpg");
+                } else if (pictureName == FUJIYAMA) {
+                    setBackground("img/fujiyama.jpg");
+                }
 
-            sudoku.draw(*event);
+            }
+
+            if (type == LEVEL) {
+                std::cout << "2" << std::endl;
+            }
+
+            if (type == SUDOKU) {
+                SDL_RenderClear(gRenderer);
+
+                SDL_Rect rect = {0, 0, backgroundTexture.width, backgroundTexture.height};
+                SDL_RenderCopy(gRenderer, backgroundTexture.texture, NULL, &rect);
+
+                sudoku.draw(*event);
+            }
         }
 }
