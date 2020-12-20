@@ -159,7 +159,6 @@ CMakeFiles/sudoku.dir/src/Game.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SD
 CMakeFiles/sudoku.dir/src/Game.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_video.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/begin_code.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
-CMakeFiles/sudoku.dir/src/Game.cpp.o: /usr/local/include/SDL2/SDL_image.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
 
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: ../src/GlobalVariables.cpp
@@ -318,6 +317,7 @@ CMakeFiles/sudoku.dir/src/Rules.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/S
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
 
+CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: ../src/GlobalVariables.h
 CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: ../src/Sudoku.cpp
 CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: ../src/Sudoku.h
 CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: ../src/Texture.h

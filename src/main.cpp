@@ -208,6 +208,7 @@ int showMenu(SDL_Renderer *renderer) {
                             selected[i] = true;
                             if (i == 0) {
                                 step = BACKGROUND;
+
                             }
                         }
                     }
@@ -241,7 +242,7 @@ int showMenu(SDL_Renderer *renderer) {
     }
 }
 
-int main( int argc, char* args[] ) {
+int main(int argc, char* args[]) {
 
     if (!initialize()) {
         return -1;

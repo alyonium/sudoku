@@ -9,7 +9,7 @@
 #ifndef SUDOKU_GAME_H
 #define SUDOKU_GAME_H
 class Game {
-    Sudoku sudoku = Sudoku(gRenderer, font);
+    Sudoku sudoku = Sudoku(font);
     Background background;
     Level level;
 public:

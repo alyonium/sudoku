@@ -4,7 +4,6 @@
 #include "SDL_ttf.h"
 #include <string>
 #include <SDL_image.h>
-#include <iostream>
 
 void Background::renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font *font) {
     int width = SCREEN_WIDTH, height = SCREEN_HEIGHT;

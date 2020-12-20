@@ -21,7 +21,6 @@ StepType step = BACKGROUND;
 
 LevelType levelDifficulty = EASY;
 
-
 Texture backgroundTexture;
 
 void setBackground(char *name) {
@@ -32,3 +31,6 @@ void setBackground(char *name) {
     backgroundTexture.height = image->h;
     backgroundTexture.texture = SDL_CreateTextureFromSurface(gRenderer, image);
 };
+
+CellData initialField[9][9];
+CellData currentField[9][9];

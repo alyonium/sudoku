@@ -5,15 +5,11 @@
 #include "Texture.h"
 #include <iostream>
 #include <fstream>
+#include <GlobalVariables.h>
 
 SDL_Texture* gTexture;
 
 Texture digitTextures[9];
-
-struct CellData {
-    int digit = 0; 	//текущая цифра в клетке, 0 для пустой
-    int validateCount = 0; // 0 если решение валидное
-};
 
 enum AreaType {
     ROW,
@@ -36,7 +32,7 @@ public:
         this->index = index;
     }
 
-    void removeDigit(int &digit, CellData (&field)[9][9], int &x, int &y) {
+    void removeDigit(int &digit, int &x, int &y) {
         counter[digit - 1]--;
 
         int xi;
@@ -66,14 +62,14 @@ public:
                 }
 
                 if (xi == x && yi == y) { // empty position
-                    field[xi][yi].validateCount -= counter[digit-1];
-                } else if (field[xi][yi].digit == digit) {
-                    field[xi][yi].validateCount--;
+                    currentField[xi][yi].validateCount -= counter[digit-1];
+                } else if (currentField[xi][yi].digit == digit) {
+                    currentField[xi][yi].validateCount--;
                 }
             }
         }
     }
-    void addDigit(int &digit, CellData (&field)[9][9], int &x, int &y) {
+    void addDigit(int &digit, int &x, int &y) {
         counter[digit - 1]++; //увеличиваем счетчик кол-ва цифр в "окружении" введенной цифры
 
         int xi;
@@ -103,19 +99,17 @@ public:
                     }
                 }
 
-                if (field[xi][yi].digit == digit) {
+                if (currentField[xi][yi].digit == digit) {
                     if (xi == x && yi == y) {
-                        field[xi][yi].validateCount += counter[digit - 1] - 1;
+                        currentField[xi][yi].validateCount += counter[digit - 1] - 1;
                     } else {
-                        field[xi][yi].validateCount++;
+                        currentField[xi][yi].validateCount++;
                     }
                 }
             }
         }
     }
 };
-
-CellData field[9][9];
 
 Area areaRows[9];
 Area areaCols[9];
@@ -176,7 +170,7 @@ void drawInvalidCells(SDL_Renderer *gRenderer) {
 
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
-            if (field[i][j].validateCount != 0) {
+            if (currentField[i][j].validateCount != 0) {
                 int x = i * CELL_SIZE;
                 int y = j * CELL_SIZE;
 
@@ -206,8 +200,8 @@ void drawInvalidCells(SDL_Renderer *gRenderer) {
 void drawDigit(SDL_Renderer *gRenderer) {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
-            if (field[i][j].digit != 0) {
-                Texture fontTexture = digitTextures[field[i][j].digit - 1];
+            if (currentField[i][j].digit != 0) {
+                Texture fontTexture = digitTextures[currentField[i][j].digit - 1];
 
                 int x = i * CELL_SIZE;
                 int y = j * CELL_SIZE;
@@ -263,7 +257,7 @@ void handleKey(SDL_Event &event) {
         case SDLK_1: case SDLK_2: case SDLK_3:
         case SDLK_4: case SDLK_5: case SDLK_6:
         case SDLK_7: case SDLK_8: case SDLK_9: {
-            int previous = field[selectedX][selectedY].digit; //текущая цифра в ячейке
+            int previous = currentField[selectedX][selectedY].digit; //текущая цифра в ячейке
 
             int newDigit = pressedKeyCode - SDLK_1 + 1; //новая цифра
 
@@ -274,31 +268,31 @@ void handleKey(SDL_Event &event) {
             int box = 3 * (selectedY / 3) + (selectedX / 3); //в какой большой клетке из 9 ячеек сейчас находимся
 
             if (previous != 0) {  //если предыдущая цифра есть
-                areaCols[selectedX].removeDigit(previous, field, selectedX, selectedY);
-                areaRows[selectedY].removeDigit(previous, field, selectedX, selectedY);
-                areaBoxes[box].removeDigit (previous, field, selectedX, selectedY);
+                areaCols[selectedX].removeDigit(previous, selectedX, selectedY);
+                areaRows[selectedY].removeDigit(previous, selectedX, selectedY);
+                areaBoxes[box].removeDigit (previous, selectedX, selectedY);
             }
 
-            field[selectedX][selectedY].digit = newDigit;
-            areaCols[selectedX].addDigit(newDigit, field, selectedX, selectedY);
-            areaRows[selectedY].addDigit(newDigit, field, selectedX, selectedY);
-            areaBoxes[box].addDigit (newDigit, field, selectedX, selectedY);
+            currentField[selectedX][selectedY].digit = newDigit;
+            areaCols[selectedX].addDigit(newDigit, selectedX, selectedY);
+            areaRows[selectedY].addDigit(newDigit, selectedX, selectedY);
+            areaBoxes[box].addDigit (newDigit, selectedX, selectedY);
 
             break;
         }
 
         case SDLK_BACKSPACE: {
-            if (field[selectedX][selectedY].digit == 0) { //если и так пустая
+            if (currentField[selectedX][selectedY].digit == 0) { //если и так пустая
                 break;
             }
 
-            field[selectedX][selectedY].digit = 0;
+            currentField[selectedX][selectedY].digit = 0;
 
             int box = 3 * (selectedY / 3) + (selectedX / 3);
 
-            areaCols[selectedX].removeDigit(field[selectedX][selectedY].digit, field, selectedX, selectedY);
-            areaRows[selectedY].removeDigit(field[selectedX][selectedY].digit, field, selectedX, selectedY);
-            areaBoxes[box].removeDigit(field[selectedX][selectedY].digit, field, selectedX, selectedY);
+            areaCols[selectedX].removeDigit(currentField[selectedX][selectedY].digit, selectedX, selectedY);
+            areaRows[selectedY].removeDigit(currentField[selectedX][selectedY].digit, selectedX, selectedY);
+            areaBoxes[box].removeDigit(currentField[selectedX][selectedY].digit, selectedX, selectedY);
 
             break;
         }
@@ -306,8 +300,7 @@ void handleKey(SDL_Event &event) {
     }
 }
 
-Sudoku::Sudoku(SDL_Renderer *gRenderer, TTF_Font *font) {
-    this->gRenderer = gRenderer;
+Sudoku::Sudoku(TTF_Font *font) {
     gTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_TARGET, 9 * CELL_SIZE + 2, 9 * CELL_SIZE + 2); // +2 на бордеры
     SDL_Color color = {30, 50, 56};
 
@@ -362,52 +355,22 @@ void Sudoku::readScheme() {
     std::ifstream in("schemes/low.txt");
 
     if (in.is_open()) {
-        //Если открытие файла прошло успешно
-
-        //Вначале посчитаем сколько чисел в файле
-        int count = 0;// число чисел в файле
-        int temp;//Временная переменная
-
-        while (!in.eof()) {
-            in >> temp;//в пустоту считываем из файла числа
-            count++;// увеличиваем счетчик числа чисел
-        }
-
-        //Число чисел посчитано, теперь нам нужно понять сколько
-        //чисел в одной строке
-        //Для этого посчитаем число пробелов до знака перевода на новую строку
 
         //Вначале переведем каретку в потоке в начало файла
         in.seekg(0, std::ios::beg);
         in.clear();
 
-        //Число пробелов в первой строчке вначале равно 0
-        int count_space = 0;
-        char symbol;
-        while (!in.eof()) {
-            //теперь нам нужно считывать не числа, а посимвольно считывать данные
-            in.get(symbol);//считали текущий символ
-            if (symbol == ' ') count_space++;//Если это пробел, то число пробелов увеличиваем
-            if (symbol == '\n') break;//Если дошли до конца строки, то выходим из цикла
-        }
-
-        //Опять переходим в потоке в начало файла
-        in.seekg(0, std::ios::beg);
-        in.clear();
-
-        //Теперь мы знаем сколько чисел в файле и сколько пробелов в первой строке.
-        //Теперь можем считать матрицу.
         //Считаем матрицу из файла
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                in >> fullField[i][j];
+                in >> initialField[i][j].digit;
             }
         }
 
         //Выведем матрицу
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++)
-                std::cout << fullField[i][j] << "\t";
+                std::cout << initialField[i][j].digit << "\t";
             std::cout << "\n";
         }
 
