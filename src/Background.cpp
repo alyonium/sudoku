@@ -4,6 +4,7 @@
 #include "SDL_ttf.h"
 #include <string>
 #include <SDL_image.h>
+#include <iostream>
 
 void Background::renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font *font) {
     int width = SCREEN_WIDTH, height = SCREEN_HEIGHT;
@@ -29,15 +30,17 @@ void Background::handleEvent(SDL_Event *e){
 
     for (int i = 0; i < 4; ++i) {
         menuTexture[i] = IMG_Load(labels[i]);
+        menuTexture[i]->w = 150;
+        menuTexture[i]->h = 150;
 
-        pos[i].x = SCREEN_WIDTH / 4;
-        pos[i].y = (SCREEN_HEIGHT / 4) + i * 60;
+        pos[i].x = 50 + i * 170;
+        std::cout << pos[i].x << std::endl;
+        pos[i].y = (SCREEN_HEIGHT / 3) + 30;
         pos[i].w = menuTexture[i]->w;
         pos[i].h = menuTexture[i]->h;
-
+        std::cout << pos[i].w << std::endl;
         SDL_CreateTextureFromSurface(gRenderer, menuTexture[i]);
     }
-
 
     int x;
     int y;
@@ -49,19 +52,21 @@ void Background::handleEvent(SDL_Event *e){
             x = e->button.x;
             y = e->button.y;
             for (int i = 0; i < 4; i += 1) {
+                char *name;
                 if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
                     y >= pos[i].y && y <= pos[i].y + pos[i].h) {
                     selected[i] = true;
                     type = SUDOKU;
                     if (i == 0) {
-                        pictureName = AUTUMN;
+                        name = "img/autumn.jpg";
                     } else if(i == 1) {
-                        pictureName = SAKURA;
+                        name = "img/sakura.jpg";
                     } else if(i == 2) {
-                        pictureName = TOKYO;
+                        name = "img/tokyo.jpg";
                     } else if(i == 3) {
-                        pictureName = FUJIYAMA;
+                        name = "img/fujiyama.jpg";
                     }
+                    setBackground(name);
                 }
             }
             break;
@@ -82,7 +87,7 @@ void Background::handleEvent(SDL_Event *e){
         SDL_RenderCopy(gRenderer, menuItemTexture.texture, NULL, &rectGroup);
     }
 
-    renderText("Выберите фон", fontColor, SCREEN_WIDTH / 2 - 80, SCREEN_HEIGHT / 4 - 20, font);
+    renderText("Выберите фон", fontColor, SCREEN_WIDTH / 2 - 80, (SCREEN_HEIGHT / 3) - 50, font);
 
     SDL_RenderPresent(gRenderer);
 }

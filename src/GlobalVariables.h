@@ -1,5 +1,6 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include "Texture.h"
 
 #ifndef SUDOKU_GLOBALVARIABLES_H
 #define SUDOKU_GLOBALVARIABLES_H
@@ -27,13 +28,8 @@ extern enum StepType {
 
 extern StepType type;
 
-extern enum PictureNames {
-    AUTUMN,
-    FUJIYAMA,
-    TOKYO,
-    SAKURA,
-};
+extern Texture backgroundTexture;
 
-extern PictureNames pictureName;
+void setBackground(char *name);
 
 #endif

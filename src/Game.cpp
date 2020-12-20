@@ -11,25 +11,6 @@ Game::Game() {
     sudoku.readScheme();
 }
 
-void Game::setBackground() {
-    SDL_Surface *image;
-    if (pictureName == TOKYO) {
-        image = IMG_Load("img/tokyo.jpg");
-    } else if (pictureName == AUTUMN) {
-        image = IMG_Load("img/autumn.jpg");
-    } else if (pictureName == SAKURA) {
-        image = IMG_Load("img/sakura.jpg");
-    } else if (pictureName == FUJIYAMA) {
-        image = IMG_Load("img/fujiyama.jpg");
-    }
-
-
-
-    backgroundTexture.width = image->w;
-    backgroundTexture.height = image->h;
-    backgroundTexture.texture = SDL_CreateTextureFromSurface(gRenderer, image);
-};
-
 void Game::handleEvent(SDL_Event *event, bool *isScene) {
         while (SDL_PollEvent(event) != 0) {
             if (event->type == SDL_QUIT) {
@@ -43,7 +24,6 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
 
             if (type == BACKGROUND) {
                 background.handleEvent(event);
-                setBackground();
             }
 
             if (type == LEVEL) {

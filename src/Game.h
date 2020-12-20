@@ -9,11 +9,9 @@
 #define SUDOKU_GAME_H
 class Game {
     Sudoku sudoku = Sudoku(gRenderer, font);
-    Texture backgroundTexture;
     Background background;
 public:
     Game();
-    void setBackground();
     void handleEvent(SDL_Event *event, bool *isScene);
 };
 #endif

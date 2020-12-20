@@ -163,6 +163,7 @@ CMakeFiles/sudoku.dir/src/Game.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
 
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: ../src/GlobalVariables.cpp
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: ../src/GlobalVariables.h
+CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: ../src/Texture.h
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_atomic.h
@@ -205,11 +206,12 @@ CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_thread.h
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_timer.h
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_touch.h
-CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_version.h
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_video.h
-CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/begin_code.h
-CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
+CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/include/SDL2/SDL_image.h
 CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
+CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/include/SDL2/SDL_version.h
+CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/include/SDL2/begin_code.h
+CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/include/SDL2/close_code.h
 
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/GlobalVariables.h
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/Rules.cpp

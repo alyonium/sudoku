@@ -1,4 +1,6 @@
 #include "GlobalVariables.h"
+#include "SDL_image.h"
+#include "Texture.h"
 
 int SCREEN_WIDTH = 750;
 int SCREEN_HEIGHT = 600;
@@ -16,4 +18,14 @@ int fontSize = 35;
 int bigFontSize = 100;
 
 StepType type = BACKGROUND;
-PictureNames pictureName = AUTUMN;
+
+Texture backgroundTexture;
+
+void setBackground(char *name) {
+    SDL_Surface *image;
+    const char* pictureName = name;
+    image = IMG_Load(pictureName);
+    backgroundTexture.width = image->w;
+    backgroundTexture.height = image->h;
+    backgroundTexture.texture = SDL_CreateTextureFromSurface(gRenderer, image);
+};
