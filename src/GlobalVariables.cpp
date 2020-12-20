@@ -17,7 +17,10 @@ TTF_Font* bigFont;
 int fontSize = 35;
 int bigFontSize = 100;
 
-StepType type = BACKGROUND;
+StepType step = BACKGROUND;
+
+LevelType levelDifficulty = EASY;
+
 
 Texture backgroundTexture;
 

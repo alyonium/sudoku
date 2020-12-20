@@ -110,6 +110,12 @@
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h">
 			<Option target="sudoku"/>
 		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Level.cpp">
+			<Option target="sudoku"/>
+		</Unit>
+		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Level.h">
+			<Option target="sudoku"/>
+		</Unit>
 		<Unit filename="/Users/alyonium/Desktop/newSudoku/src/Rules.cpp">
 			<Option target="sudoku"/>
 		</Unit>

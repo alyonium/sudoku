@@ -6,6 +6,7 @@
 #include "GlobalVariables.h"
 #include <iostream>
 #include "Background.h"
+#include "Level.h"
 
 Game::Game() {
     sudoku.readScheme();
@@ -22,15 +23,15 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
                 break;
             }
 
-            if (type == BACKGROUND) {
+            if (step == BACKGROUND) {
                 background.handleEvent(event);
             }
 
-            if (type == LEVEL) {
-                std::cout << "2" << std::endl;
+            if (step == LEVEL) {
+                level.handleEvent(event);
             }
 
-            if (type == SUDOKU) {
+            if (step == SUDOKU) {
                 SDL_RenderClear(gRenderer);
 
                 SDL_Rect rect = {0, 0, backgroundTexture.width, backgroundTexture.height};

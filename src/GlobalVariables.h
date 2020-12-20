@@ -26,7 +26,15 @@ extern enum StepType {
     SUDOKU
 };
 
-extern StepType type;
+extern StepType step;
+
+extern enum LevelType {
+    EASY,
+    MIDDLE,
+    HARD
+};
+
+extern LevelType levelDifficulty;
 
 extern Texture backgroundTexture;
 

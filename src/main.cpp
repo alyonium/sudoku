@@ -206,6 +206,9 @@ int showMenu(SDL_Renderer *renderer) {
                         if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
                             y >= pos[i].y && y <= pos[i].y + pos[i].h) {
                             selected[i] = true;
+                            if (i == 0) {
+                                step = BACKGROUND;
+                            }
                         }
                     }
                     break;

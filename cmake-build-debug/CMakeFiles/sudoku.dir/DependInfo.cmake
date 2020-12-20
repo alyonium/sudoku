@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/alyonium/Desktop/newSudoku/src/Control.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/Control.cpp.o"
   "/Users/alyonium/Desktop/newSudoku/src/Game.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/Game.cpp.o"
   "/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o"
+  "/Users/alyonium/Desktop/newSudoku/src/Level.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/Level.cpp.o"
   "/Users/alyonium/Desktop/newSudoku/src/Rules.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/Rules.cpp.o"
   "/Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/Sudoku.cpp.o"
   "/Users/alyonium/Desktop/newSudoku/src/main.cpp" "/Users/alyonium/Desktop/newSudoku/cmake-build-debug/CMakeFiles/sudoku.dir/src/main.cpp.o"

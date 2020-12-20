@@ -34,11 +34,9 @@ void Background::handleEvent(SDL_Event *e){
         menuTexture[i]->h = 150;
 
         pos[i].x = 50 + i * 170;
-        std::cout << pos[i].x << std::endl;
         pos[i].y = (SCREEN_HEIGHT / 3) + 30;
         pos[i].w = menuTexture[i]->w;
         pos[i].h = menuTexture[i]->h;
-        std::cout << pos[i].w << std::endl;
         SDL_CreateTextureFromSurface(gRenderer, menuTexture[i]);
     }
 
@@ -56,7 +54,7 @@ void Background::handleEvent(SDL_Event *e){
                 if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
                     y >= pos[i].y && y <= pos[i].y + pos[i].h) {
                     selected[i] = true;
-                    type = SUDOKU;
+                    step = LEVEL;
                     if (i == 0) {
                         name = "img/autumn.jpg";
                     } else if(i == 1) {
