@@ -23,7 +23,8 @@ extern int bigFontSize;
 extern enum StepType {
     BACKGROUND,
     LEVEL,
-    SUDOKU
+    SUDOKU,
+    VICTORY
 };
 
 extern StepType step;

@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/sudoku.dir/src/Level.cpp.o"
   "CMakeFiles/sudoku.dir/src/Rules.cpp.o"
   "CMakeFiles/sudoku.dir/src/Sudoku.cpp.o"
+  "CMakeFiles/sudoku.dir/src/Victory.cpp.o"
   "CMakeFiles/sudoku.dir/src/main.cpp.o"
   "sudoku"
   "sudoku.pdb"

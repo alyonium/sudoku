@@ -208,7 +208,6 @@ int showMenu(SDL_Renderer *renderer) {
                             selected[i] = true;
                             if (i == 0) {
                                 step = BACKGROUND;
-
                             }
                         }
                     }

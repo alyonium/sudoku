@@ -8,7 +8,7 @@
 #include "Level.h"
 
 Game::Game() {
-//    sudoku.readScheme();
+
 }
 
 void Game::handleEvent(SDL_Event *event, bool *isScene) {
@@ -38,5 +38,10 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
 
                 sudoku.draw(*event);
             }
+
+            if (step == VICTORY) {
+                victory.handleEvent(event, isScene);
+            }
+
         }
 }

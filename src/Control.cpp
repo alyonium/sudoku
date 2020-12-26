@@ -35,7 +35,7 @@ void Control::handleEvent(SDL_Event *e, bool *isScene){
 
     renderText("из ячейки используйте клавишу delete. Если вы", fontColor, 40, SCREEN_HEIGHT / 5 + 200, font);
 
-    renderText("введете цифру, не соответствующую решению, она", fontColor, 30, SCREEN_HEIGHT / 5 + 250, font);
+    renderText("заполните клетку неверной цифрой, она", fontColor, 50, SCREEN_HEIGHT / 5 + 250, font);
 
     renderText("подсветится красным.", fontColor, 220, SCREEN_HEIGHT / 5 + 300, font);
 

@@ -332,6 +332,33 @@ src/Sudoku.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Sudoku.cpp.s
 .PHONY : src/Sudoku.cpp.s
 
+src/Victory.o: src/Victory.cpp.o
+
+.PHONY : src/Victory.o
+
+# target to build an object file
+src/Victory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Victory.cpp.o
+.PHONY : src/Victory.cpp.o
+
+src/Victory.i: src/Victory.cpp.i
+
+.PHONY : src/Victory.i
+
+# target to preprocess a source file
+src/Victory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Victory.cpp.i
+.PHONY : src/Victory.cpp.i
+
+src/Victory.s: src/Victory.cpp.s
+
+.PHONY : src/Victory.s
+
+# target to generate assembly for a file
+src/Victory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sudoku.dir/build.make CMakeFiles/sudoku.dir/src/Victory.cpp.s
+.PHONY : src/Victory.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -389,6 +416,9 @@ help:
 	@echo "... src/Sudoku.o"
 	@echo "... src/Sudoku.i"
 	@echo "... src/Sudoku.s"
+	@echo "... src/Victory.o"
+	@echo "... src/Victory.i"
+	@echo "... src/Victory.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

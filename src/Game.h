@@ -5,6 +5,7 @@
 #include "GlobalVariables.h"
 #include "Background.h"
 #include "Level.h"
+#include "Victory.h"
 
 #ifndef SUDOKU_GAME_H
 #define SUDOKU_GAME_H
@@ -12,6 +13,7 @@ class Game {
     Sudoku sudoku = Sudoku(font);
     Background background;
     Level level;
+    Victory victory;
 public:
     Game();
     void handleEvent(SDL_Event *event, bool *isScene);

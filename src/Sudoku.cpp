@@ -74,6 +74,7 @@ public:
     }
 
     void addDigit(int &digit, int &x, int &y) {
+
         counter[digit - 1]++; //увеличиваем счетчик кол-ва одинаковых цифр в "окружении" введенной цифры
 
         int xi;
@@ -104,7 +105,6 @@ public:
                 }
 
                 //если на площади уже есть цифра с таким значением
-
                 if (currentField[yi][xi].digit == digit) {
                     if (xi == x && yi == y) { //если это та цифра, которую мы и ввели
                         currentField[yi][xi].validateCount += counter[digit - 1] - 1;
@@ -125,6 +125,17 @@ int selectedCol = 0;
 int selectedRow = 0;
 
 const int CELL_SIZE = 50;
+
+bool checkUserWin() {
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            if (currentField[i][j].digit == 0) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 void drawGrid(SDL_Renderer *gRenderer) {
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
@@ -180,13 +191,13 @@ void drawInvalidCells(SDL_Renderer *gRenderer) {
                 int horizontalShift = j * CELL_SIZE;
                 int verticalShift = i * CELL_SIZE;
 
-                int startVertical = i % 3 == 0 ?
-                                    verticalShift + 2 :
-                                    verticalShift + 1;
-
                 int startHorizontal = j % 3 == 0 ?
                                       horizontalShift + 2 :
                                       horizontalShift + 1;
+
+                int startVertical = i % 3 == 0 ?
+                                    verticalShift + 2 :
+                                    verticalShift + 1;
 
                 int width = j % 3 == 0 ?
                             CELL_SIZE - 2 :
@@ -206,6 +217,7 @@ void drawInvalidCells(SDL_Renderer *gRenderer) {
 void drawDigit(SDL_Renderer *gRenderer) {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
+
             if (currentField[i][j].digit != 0) {
                 Texture fontTexture = digitTextures[currentField[i][j].digit - 1];
 
@@ -295,6 +307,10 @@ void handleKey(SDL_Event &event) {
                 areaCols[selectedCol].addDigit(newDigit, selectedCol, selectedRow);
                 areaBoxes[box].addDigit(newDigit, selectedCol, selectedRow);
 
+                if (checkUserWin()) {
+                    step = VICTORY;
+                }
+
                 break;
             }
 
@@ -368,7 +384,7 @@ void Sudoku::draw(SDL_Event event) {
 
     SDL_Rect fieldRect = {(SCREEN_WIDTH - size) / 2, (SCREEN_HEIGHT - size) / 2, size, size};
     SDL_RenderCopy(gRenderer, gTexture, NULL, &fieldRect);
-}
+ }
 
 void Sudoku::readScheme() {
     std::ifstream in("schemes/low.txt");
