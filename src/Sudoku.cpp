@@ -7,8 +7,9 @@
 #include <fstream>
 #include <GlobalVariables.h>
 
-SDL_Texture* gTexture;
+SDL_Texture *gTexture;
 
+//текстуры с цифрами от 1 до 9 (подставляем готовую, когда отрисовываем)
 Texture digitTextures[9];
 
 enum AreaType {
@@ -20,11 +21,12 @@ enum AreaType {
 class Area {
 private:
     AreaType type;   // тип поля
-    int index;         // индексы строки/клетки/столбца
-    int counter[9]; // счетчик повторяющихся цифр в окружении
+    int index;      // индексы строки/клетки/столбца
+    int counter[9] = {0};// счетчик конкретных цифр в строке/клетке/столбце
 
 public:
     Area() {};
+
     ~Area() {};
 
     void init(AreaType type, int index) {
@@ -33,6 +35,7 @@ public:
     }
 
     void removeDigit(int &digit, int &x, int &y) {
+
         counter[digit - 1]--;
 
         int xi;
@@ -61,16 +64,17 @@ public:
                     }
                 }
 
-                if (xi == x && yi == y) { // empty position
-                    currentField[xi][yi].validateCount -= counter[digit-1];
-                } else if (currentField[xi][yi].digit == digit) {
-                    currentField[xi][yi].validateCount--;
+                if (xi == x && yi == y) {
+                    currentField[yi][xi].validateCount -= counter[digit - 1];
+                } else if (currentField[yi][xi].digit == digit) {
+                    currentField[yi][xi].validateCount--;
                 }
             }
         }
     }
+
     void addDigit(int &digit, int &x, int &y) {
-        counter[digit - 1]++; //увеличиваем счетчик кол-ва цифр в "окружении" введенной цифры
+        counter[digit - 1]++; //увеличиваем счетчик кол-ва одинаковых цифр в "окружении" введенной цифры
 
         int xi;
         int yi;
@@ -99,11 +103,13 @@ public:
                     }
                 }
 
-                if (currentField[xi][yi].digit == digit) {
-                    if (xi == x && yi == y) {
-                        currentField[xi][yi].validateCount += counter[digit - 1] - 1;
+                //если на площади уже есть цифра с таким значением
+
+                if (currentField[yi][xi].digit == digit) {
+                    if (xi == x && yi == y) { //если это та цифра, которую мы и ввели
+                        currentField[yi][xi].validateCount += counter[digit - 1] - 1;
                     } else {
-                        currentField[xi][yi].validateCount++;
+                        currentField[yi][xi].validateCount++;
                     }
                 }
             }
@@ -115,8 +121,8 @@ Area areaRows[9];
 Area areaCols[9];
 Area areaBoxes[9];
 
-int selectedX = 0;
-int selectedY = 0;
+int selectedCol = 0;
+int selectedRow = 0;
 
 const int CELL_SIZE = 50;
 
@@ -140,29 +146,29 @@ void drawGrid(SDL_Renderer *gRenderer) {
 }
 
 void drawSelection(SDL_Renderer *gRenderer) {
-    int x = selectedX * CELL_SIZE;
-    int y = selectedY * CELL_SIZE;
+    int horizontalShift = selectedCol * CELL_SIZE;
+    int verticalShift = selectedRow * CELL_SIZE;
 
     SDL_SetRenderDrawColor(gRenderer, 187, 222, 251, 255);
 
-    int startX = selectedX % 3 == 0 ?
-                 x + 2:
-                 x + 1; //толстые или тонкие линии
+    int startHorizontal = selectedCol % 3 == 0 ?
+                          horizontalShift + 2 :
+                          horizontalShift + 1; //толстые или тонкие линии
 
-    int startY = selectedY % 3 == 0 ?
-                 y + 2:
-                 y + 1;
+    int startVertical = selectedRow % 3 == 0 ?
+                        verticalShift + 2 :
+                        verticalShift + 1;
 
-    int width = selectedX % 3 == 0 ?
-                CELL_SIZE - 2:
+    int width = selectedCol % 3 == 0 ?
+                CELL_SIZE - 2 :
                 CELL_SIZE - 1;
 
-    int height = selectedY % 3 == 0 ?
-                 CELL_SIZE - 2:
+    int height = selectedRow % 3 == 0 ?
+                 CELL_SIZE - 2 :
                  CELL_SIZE - 1;
 
-    SDL_Rect select = {startX, startY, width, height};
-    SDL_RenderFillRect (gRenderer, &select);
+    SDL_Rect select = {startHorizontal, startVertical, width, height};
+    SDL_RenderFillRect(gRenderer, &select);
 }
 
 void drawInvalidCells(SDL_Renderer *gRenderer) {
@@ -171,27 +177,27 @@ void drawInvalidCells(SDL_Renderer *gRenderer) {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
             if (currentField[i][j].validateCount != 0) {
-                int x = i * CELL_SIZE;
-                int y = j * CELL_SIZE;
+                int horizontalShift = j * CELL_SIZE;
+                int verticalShift = i * CELL_SIZE;
 
-                int startX = i % 3 == 0 ?
-                             x + 2:
-                             x + 1;
+                int startVertical = i % 3 == 0 ?
+                                    verticalShift + 2 :
+                                    verticalShift + 1;
 
-                int startY = j % 3 == 0 ?
-                             y + 2:
-                             y + 1;
+                int startHorizontal = j % 3 == 0 ?
+                                      horizontalShift + 2 :
+                                      horizontalShift + 1;
 
-                int width = i % 3 == 0 ?
-                            CELL_SIZE - 2:
+                int width = j % 3 == 0 ?
+                            CELL_SIZE - 2 :
                             CELL_SIZE - 1;
 
-                int height = j % 3 == 0 ?
-                             CELL_SIZE - 2:
+                int height = i % 3 == 0 ?
+                             CELL_SIZE - 2 :
                              CELL_SIZE - 1;
 
-                SDL_Rect select = {startX, startY, width, height};
-                SDL_RenderFillRect (gRenderer, &select);
+                SDL_Rect select = {startHorizontal, startVertical, width, height};
+                SDL_RenderFillRect(gRenderer, &select);
             }
         }
     }
@@ -203,19 +209,19 @@ void drawDigit(SDL_Renderer *gRenderer) {
             if (currentField[i][j].digit != 0) {
                 Texture fontTexture = digitTextures[currentField[i][j].digit - 1];
 
-                int x = i * CELL_SIZE;
-                int y = j * CELL_SIZE;
+                int verticalShift = i * CELL_SIZE;
+                int horizontalShift = j * CELL_SIZE;
 
-                int startX = (i % 3 == 0 ?
-                              x + 2:
-                              x + 1) + (CELL_SIZE - fontTexture.width) / 2;
+                int startVertical = (i % 3 == 0 ?
+                                     verticalShift + 2 :
+                                     verticalShift + 1) + (CELL_SIZE - fontTexture.height) / 2;
 
-                int startY = (j % 3 == 0 ?
-                              y + 4:
-                              y + 3) + (CELL_SIZE - fontTexture.height) / 2;
+                int startHorizontal = (j % 3 == 0 ?
+                                       horizontalShift + 4 :
+                                       horizontalShift + 3) + (CELL_SIZE - fontTexture.width) / 2;
 
-                SDL_Rect digitRect = {startX, startY, fontTexture.width, fontTexture.height};
-                SDL_RenderCopy( gRenderer, fontTexture.texture, NULL, &digitRect );
+                SDL_Rect digitRect = {startHorizontal, startVertical, fontTexture.width, fontTexture.height};
+                SDL_RenderCopy(gRenderer, fontTexture.texture, NULL, &digitRect);
             }
         }
     }
@@ -223,90 +229,108 @@ void drawDigit(SDL_Renderer *gRenderer) {
 
 void handleKey(SDL_Event &event) {
     if (event.type == SDL_KEYDOWN) {
-    int pressedKeyCode = event.key.keysym.sym;
+        int pressedKeyCode = event.key.keysym.sym;
 
-    switch(pressedKeyCode) {
-        case SDLK_LEFT: {
-            if (selectedX != 0)  {
-                selectedX--;
-            }
-            break;
-        }
-
-        case SDLK_RIGHT: {
-            if (selectedX != 8) {
-                selectedX++;
-            }
-            break;
-        }
-
-        case SDLK_UP: {
-            if (selectedY != 0)  {
-                selectedY--;
-            }
-            break;
-        }
-
-        case SDLK_DOWN: {
-            if (selectedY != 8) {
-                selectedY++;
-            }
-            break;
-        }
-
-        case SDLK_1: case SDLK_2: case SDLK_3:
-        case SDLK_4: case SDLK_5: case SDLK_6:
-        case SDLK_7: case SDLK_8: case SDLK_9: {
-            int previous = currentField[selectedX][selectedY].digit; //текущая цифра в ячейке
-
-            int newDigit = pressedKeyCode - SDLK_1 + 1; //новая цифра
-
-            if (previous == newDigit) { //если дважды ввели одно и то же
+        switch (pressedKeyCode) {
+            case SDLK_LEFT: {
+                if (selectedCol != 0) {
+                    selectedCol--;
+                }
                 break;
             }
 
-            int box = 3 * (selectedY / 3) + (selectedX / 3); //в какой большой клетке из 9 ячеек сейчас находимся
-
-            if (previous != 0) {  //если предыдущая цифра есть
-                areaCols[selectedX].removeDigit(previous, selectedX, selectedY);
-                areaRows[selectedY].removeDigit(previous, selectedX, selectedY);
-                areaBoxes[box].removeDigit (previous, selectedX, selectedY);
-            }
-
-            currentField[selectedX][selectedY].digit = newDigit;
-            areaCols[selectedX].addDigit(newDigit, selectedX, selectedY);
-            areaRows[selectedY].addDigit(newDigit, selectedX, selectedY);
-            areaBoxes[box].addDigit (newDigit, selectedX, selectedY);
-
-            break;
-        }
-
-        case SDLK_BACKSPACE: {
-            if (currentField[selectedX][selectedY].digit == 0) { //если и так пустая
+            case SDLK_RIGHT: {
+                if (selectedCol != 8) {
+                    selectedCol++;
+                }
                 break;
             }
 
-            currentField[selectedX][selectedY].digit = 0;
+            case SDLK_UP: {
+                if (selectedRow != 0) {
+                    selectedRow--;
+                }
+                break;
+            }
 
-            int box = 3 * (selectedY / 3) + (selectedX / 3);
+            case SDLK_DOWN: {
+                if (selectedRow != 8) {
+                    selectedRow++;
+                }
+                break;
+            }
 
-            areaCols[selectedX].removeDigit(currentField[selectedX][selectedY].digit, selectedX, selectedY);
-            areaRows[selectedY].removeDigit(currentField[selectedX][selectedY].digit, selectedX, selectedY);
-            areaBoxes[box].removeDigit(currentField[selectedX][selectedY].digit, selectedX, selectedY);
+            case SDLK_1:
+            case SDLK_2:
+            case SDLK_3:
+            case SDLK_4:
+            case SDLK_5:
+            case SDLK_6:
+            case SDLK_7:
+            case SDLK_8:
+            case SDLK_9: {
+                int previous = currentField[selectedRow][selectedCol].digit; //текущая цифра в ячейке
 
-            break;
+                int newDigit = pressedKeyCode - SDLK_1 + 1; //новая цифра
+
+                if (previous == newDigit) { //если дважды ввели одно и то же
+                    break;
+                }
+
+                int box = 3 * (selectedRow / 3) + (selectedCol / 3); //в какой большой клетке из 9
+
+                if (previous != 0) {  //если предыдущая цифра есть
+                    if (currentField[selectedRow][selectedCol].noEdit) {
+                        break;
+                    } else {
+                        areaRows[selectedRow].removeDigit(previous, selectedCol, selectedRow);
+                        areaCols[selectedCol].removeDigit(previous, selectedCol, selectedRow);
+                        areaBoxes[box].removeDigit(previous, selectedCol, selectedRow);
+                    }
+                }
+
+                currentField[selectedRow][selectedCol].digit = newDigit;
+
+                areaRows[selectedRow].addDigit(newDigit, selectedCol, selectedRow);
+                areaCols[selectedCol].addDigit(newDigit, selectedCol, selectedRow);
+                areaBoxes[box].addDigit(newDigit, selectedCol, selectedRow);
+
+                break;
+            }
+
+            case SDLK_BACKSPACE: {
+                if (currentField[selectedRow][selectedCol].digit == 0) { //если и так пустая
+                    break;
+                }
+
+                if (currentField[selectedRow][selectedCol].noEdit) {
+                    break;
+                }
+
+                int box = 3 * (selectedRow / 3) + (selectedCol / 3);
+
+                areaRows[selectedRow].removeDigit(currentField[selectedRow][selectedCol].digit, selectedCol,
+                                                  selectedRow);
+                areaCols[selectedCol].removeDigit(currentField[selectedRow][selectedCol].digit, selectedCol,
+                                                  selectedRow);
+                areaBoxes[box].removeDigit(currentField[selectedRow][selectedCol].digit, selectedCol, selectedRow);
+
+                currentField[selectedRow][selectedCol].digit = 0;
+
+                break;
+            }
         }
-    }
     }
 }
 
 Sudoku::Sudoku(TTF_Font *font) {
-    gTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_TARGET, 9 * CELL_SIZE + 2, 9 * CELL_SIZE + 2); // +2 на бордеры
+    gTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_TARGET, 9 * CELL_SIZE + 2,
+                                 9 * CELL_SIZE + 2); // +2 на бордеры
     SDL_Color color = {30, 50, 56};
 
     for (int i = 0; i < 9; i++) {
         std::string digitString = std::to_string(i + 1);
-        SDL_Surface* textSurface = TTF_RenderText_Blended(font, digitString.c_str(), color);
+        SDL_Surface *textSurface = TTF_RenderText_Blended(font, digitString.c_str(), color);
 
         //создаем поверхности с цифрами
         SDL_Texture *texture = SDL_CreateTextureFromSurface(gRenderer, textSurface);
@@ -319,35 +343,30 @@ Sudoku::Sudoku(TTF_Font *font) {
 
         //освобождаем ненужную поверхность
         SDL_FreeSurface(textSurface);
-    }
 
-    for (int i = 0; i < 9; i++) {
-        areaCols[i].init(COLUMN, i);
-    }
-
-    for (int i = 0; i < 9; i++) {
         areaRows[i].init(ROW, i);
-    }
-
-    for (int i = 0; i < 9; i++) {
+        areaCols[i].init(COLUMN, i);
         areaBoxes[i].init(BOX, i);
+
     }
 
+    readScheme();
+    fillCurrentField();
 }
 
 void Sudoku::draw(SDL_Event event) {
     handleKey(event);
     SDL_SetRenderTarget(gRenderer, gTexture);
     drawGrid(gRenderer);
-    drawInvalidCells(gRenderer);
     drawSelection(gRenderer);
+    drawInvalidCells(gRenderer);
     drawDigit(gRenderer);
 
     SDL_SetRenderTarget(gRenderer, NULL);
 
     int size = 9 * CELL_SIZE + 4;
 
-    SDL_Rect fieldRect = {(750 - size) / 2, (600 - size) / 2, size, size};
+    SDL_Rect fieldRect = {(SCREEN_WIDTH - size) / 2, (SCREEN_HEIGHT - size) / 2, size, size};
     SDL_RenderCopy(gRenderer, gTexture, NULL, &fieldRect);
 }
 
@@ -355,27 +374,42 @@ void Sudoku::readScheme() {
     std::ifstream in("schemes/low.txt");
 
     if (in.is_open()) {
-
-        //Вначале переведем каретку в потоке в начало файла
         in.seekg(0, std::ios::beg);
         in.clear();
 
-        //Считаем матрицу из файла
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 in >> initialField[i][j].digit;
             }
         }
 
-        //Выведем матрицу
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++)
-                std::cout << initialField[i][j].digit << "\t";
-            std::cout << "\n";
-        }
-
-        in.close();//под конец закроем файла
+        in.close();
     } else {
-        std::cout << "Файл не найден.";
+        std::cout << "File doesn't exist";
+    }
+}
+
+void Sudoku::fillCurrentField() {
+    for (int i = 0; i < 9; i++) {
+
+        int first = (rand() % 9) + 1;
+        int second = (rand() % 8) + 2;
+        int third = (rand() % 7) + 3;
+
+        for (int j = 0; j < 9; j++) {
+            if (initialField[i][j].digit != first
+                && initialField[i][j].digit != second
+                && initialField[i][j].digit != third) {
+
+                currentField[i][j].digit = initialField[i][j].digit;
+                currentField[i][j].noEdit = true;
+
+                int box = 3 * (i / 3) + (j / 3);
+
+                areaRows[i].addDigit(currentField[i][j].digit, j, i);
+                areaCols[j].addDigit(currentField[i][j].digit, j, i);
+                areaBoxes[box].addDigit(currentField[i][j].digit, j, i);
+            }
+        }
     }
 }

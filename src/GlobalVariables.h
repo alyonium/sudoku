@@ -43,7 +43,7 @@ void setBackground(char *name);
 struct CellData {
     int digit = 0; 	//текущая цифра в клетке, 0 для пустой
     int validateCount = 0; // 0 если решение валидное
-    bool noEdit = false; //считана со схемы true или введена юзером false
+    bool noEdit = false; //считана со схемы - true, введена юзером - false
 };
 
 extern CellData initialField[9][9];

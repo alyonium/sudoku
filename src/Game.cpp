@@ -8,7 +8,7 @@
 #include "Level.h"
 
 Game::Game() {
-    sudoku.readScheme();
+//    sudoku.readScheme();
 }
 
 void Game::handleEvent(SDL_Event *event, bool *isScene) {

@@ -8,5 +8,6 @@ public:
     Sudoku(TTF_Font*);
     void draw(SDL_Event);
     void readScheme();
+    void fillCurrentField();
 };
 #endif

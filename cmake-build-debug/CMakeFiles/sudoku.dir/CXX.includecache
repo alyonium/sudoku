@@ -6,21 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.cpp
-GlobalVariables.h
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
-SDL_image.h
-/Users/alyonium/Desktop/newSudoku/src/SDL_image.h
-Texture.h
-/Users/alyonium/Desktop/newSudoku/src/Texture.h
-
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
+../src/GlobalVariables.h
 SDL.h
-/Users/alyonium/Desktop/newSudoku/src/SDL.h
+../src/SDL.h
 SDL_ttf.h
-/Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
+../src/SDL_ttf.h
+Texture.h
+../src/Texture.h
+
+/Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp
+SDL.h
+-
+SDL_ttf.h
+-
+string
+-
+Sudoku.h
+/Users/alyonium/Desktop/newSudoku/src/Sudoku.h
 Texture.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
+iostream
+-
+fstream
+-
+GlobalVariables.h
+-
+
+/Users/alyonium/Desktop/newSudoku/src/Sudoku.h
+SDL.h
+-
+SDL_ttf.h
+-
 
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
 SDL.h
@@ -616,6 +632,14 @@ begin_code.h
 close_code.h
 /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
 
+/usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_version.h
+SDL_stdinc.h
+/usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_stdinc.h
+begin_code.h
+/usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/begin_code.h
+close_code.h
+/usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
+
 /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_video.h
 SDL_stdinc.h
 /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_stdinc.h
@@ -630,15 +654,9 @@ begin_code.h
 close_code.h
 /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
 
-/usr/local/include/SDL2/SDL_image.h
-SDL.h
-/usr/local/include/SDL2/SDL.h
-SDL_version.h
-/usr/local/include/SDL2/SDL_version.h
-begin_code.h
-/usr/local/include/SDL2/begin_code.h
-close_code.h
-/usr/local/include/SDL2/close_code.h
+/usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/begin_code.h
+
+/usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/close_code.h
 
 /usr/local/include/SDL2/SDL_ttf.h
 SDL.h
@@ -646,17 +664,5 @@ SDL.h
 begin_code.h
 /usr/local/include/SDL2/begin_code.h
 close_code.h
-/usr/local/include/SDL2/close_code.h
-
-/usr/local/include/SDL2/SDL_version.h
-SDL_stdinc.h
-/usr/local/include/SDL2/SDL_stdinc.h
-begin_code.h
-/usr/local/include/SDL2/begin_code.h
-close_code.h
-/usr/local/include/SDL2/close_code.h
-
-/usr/local/include/SDL2/begin_code.h
-
 /usr/local/include/SDL2/close_code.h
 
