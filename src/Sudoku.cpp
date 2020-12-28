@@ -9,7 +9,6 @@
 
 SDL_Texture *gTexture;
 
-//текстуры с цифрами от 1 до 9 (подставляем готовую, когда отрисовываем)
 Texture digitTextures[9];
 
 enum AreaType {
@@ -130,11 +129,11 @@ bool checkUserWin() {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
             if (currentField[i][j].digit == 0) {
-                return true;
+                return false;
             }
         }
     }
-    return false;
+    return true;
 }
 
 void drawGrid(SDL_Renderer *gRenderer) {
@@ -239,7 +238,19 @@ void drawDigit(SDL_Renderer *gRenderer) {
     }
 }
 
-void handleKey(SDL_Event &event) {
+void handleKey(SDL_Event &event, bool *isScene) {
+
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
+        int x = event.button.x;
+        int y = event.button.y;
+
+        if (x >= backButtonRect.x && x <= backButtonRect.x + backButtonRect.w &&
+            y >= backButtonRect.y && y <= backButtonRect.y + backButtonRect.h) {
+            *isScene = false;
+            addBackButton = true;
+        }
+    }
+
     if (event.type == SDL_KEYDOWN) {
         int pressedKeyCode = event.key.keysym.sym;
 
@@ -365,13 +376,10 @@ Sudoku::Sudoku(TTF_Font *font) {
         areaBoxes[i].init(BOX, i);
 
     }
-
-    readScheme();
-    fillCurrentField();
 }
 
-void Sudoku::draw(SDL_Event event) {
-    handleKey(event);
+void Sudoku::draw(SDL_Event event, bool *isScene) {
+    handleKey(event, isScene);
     SDL_SetRenderTarget(gRenderer, gTexture);
     drawGrid(gRenderer);
     drawSelection(gRenderer);
@@ -383,11 +391,12 @@ void Sudoku::draw(SDL_Event event) {
     int size = 9 * CELL_SIZE + 4;
 
     SDL_Rect fieldRect = {(SCREEN_WIDTH - size) / 2, (SCREEN_HEIGHT - size) / 2, size, size};
+    backButton();
     SDL_RenderCopy(gRenderer, gTexture, NULL, &fieldRect);
  }
 
 void Sudoku::readScheme() {
-    std::ifstream in("schemes/low.txt");
+    std::ifstream in(filename);
 
     if (in.is_open()) {
         in.seekg(0, std::ios::beg);

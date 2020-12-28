@@ -6,7 +6,7 @@
 class Sudoku {
 public:
     Sudoku(TTF_Font*);
-    void draw(SDL_Event);
+    void draw(SDL_Event, bool*);
     void readScheme();
     void fillCurrentField();
 };

@@ -50,4 +50,13 @@ struct CellData {
 extern CellData initialField[9][9];
 extern CellData currentField[9][9];
 
+extern char *filename;
+
+extern SDL_Rect backButtonRect;
+extern SDL_Texture *backButtonTexture;
+
+void backButton();
+
+extern bool addBackButton;
+
 #endif

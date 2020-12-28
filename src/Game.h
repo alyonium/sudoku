@@ -10,9 +10,9 @@
 #ifndef SUDOKU_GAME_H
 #define SUDOKU_GAME_H
 class Game {
+    Level level;
     Sudoku sudoku = Sudoku(font);
     Background background;
-    Level level;
     Victory victory;
 public:
     void handleEvent(SDL_Event *event, bool *isScene);

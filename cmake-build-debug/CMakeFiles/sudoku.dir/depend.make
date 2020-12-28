@@ -217,6 +217,7 @@ CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/include/SDL2/close_c
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/GlobalVariables.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Level.cpp
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Level.h
+CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Sudoku.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Texture.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h

@@ -8,8 +8,8 @@
 
 class Background {
 public:
-    void handleEvent(SDL_Event* e);
-    void renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font* font);
+    void handleEvent(SDL_Event*, bool*);
+    void renderText(const char*, SDL_Color, int, int, TTF_Font*);
 };
 
 #endif

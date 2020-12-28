@@ -34,3 +34,22 @@ void setBackground(char *name) {
 
 CellData initialField[9][9];
 CellData currentField[9][9];
+
+char *filename = "schemes/low.txt";
+
+SDL_Rect backButtonRect = { 10, 10, 30, 30 };
+SDL_Texture *backButtonTexture;
+
+void backButton() {
+    int width = SCREEN_WIDTH;
+    int height = SCREEN_HEIGHT;
+    SDL_Surface *backButton;
+    backButton = SDL_CreateRGBSurface(0, 30, 30, 32, 0, 0, 0, 0);
+    SDL_FillRect(backButton, NULL, SDL_MapRGB(backButton->format, 255, 0, 0));
+
+    backButtonTexture = SDL_CreateTextureFromSurface(gRenderer, backButton);
+    SDL_QueryTexture(backButtonTexture, NULL, NULL, &width, &height);
+    SDL_RenderCopy(gRenderer, backButtonTexture, NULL, &backButtonRect);
+}
+
+bool addBackButton = false;

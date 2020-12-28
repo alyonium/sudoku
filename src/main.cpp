@@ -105,7 +105,7 @@ int showMenu(SDL_Renderer *renderer) {
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 
-    const char *labels[MENU_NUMBERS] = { "Начать игру", "Правила", "Управление", "Выход" };
+    const char *labels[MENU_NUMBERS] = { "Новая игра", "Правила", "Управление", "Выход" };
     SDL_Surface *menuTextTexture[MENU_NUMBERS];
 
     bool hovered[MENU_NUMBERS] = {false, false, false, false};
@@ -165,7 +165,7 @@ int showMenu(SDL_Renderer *renderer) {
 
         isMenu = true;
 
-        for(int i = 0; i< MENU_NUMBERS; ++i) {
+        for(int i = 0; i < MENU_NUMBERS; ++i) {
             if(selected[i]) {
                 isMenu = false;
                 break;
@@ -237,6 +237,11 @@ int showMenu(SDL_Renderer *renderer) {
             SDL_QueryTexture(menuItemTexture.texture, NULL, NULL, &menuItemTexture.width, &menuItemTexture.height);
             SDL_Rect rectGroup = { pos[i].x, pos[i].y, menuItemTexture.width, menuItemTexture.height };
             SDL_RenderCopy(renderer, menuItemTexture.texture, NULL, &rectGroup);
+        }
+        if (addBackButton) {
+            //нужно добавить логику. при клике на "новая игра" процесс текущей игры обнуляется. при клике по этой кнопке - сохраняется. ниче лишнее не подсвечивается. все как и было.
+            std::cout << "add back menu" << std::endl;
+            backButton();
         }
     }
 }

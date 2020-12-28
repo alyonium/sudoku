@@ -19,11 +19,15 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
             }
 
             if (step == BACKGROUND) {
-                background.handleEvent(event);
+                background.handleEvent(event, isScene);
             }
 
             if (step == LEVEL) {
-                level.handleEvent(event);
+                level.handleEvent(event, isScene);
+                if (step == SUDOKU) {
+                    sudoku.readScheme();
+                    sudoku.fillCurrentField();
+                }
             }
 
             if (step == SUDOKU) {
@@ -32,7 +36,7 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
                 SDL_Rect rect = {0, 0, backgroundTexture.width, backgroundTexture.height};
                 SDL_RenderCopy(gRenderer, backgroundTexture.texture, NULL, &rect);
 
-                sudoku.draw(*event);
+                sudoku.draw(*event, isScene);
             }
 
             if (step == VICTORY) {

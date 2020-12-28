@@ -16,7 +16,7 @@ void Background::renderText(const char *text, SDL_Color color, int xStart, int y
     SDL_FreeSurface(surfaceGroup);
 }
 
-void Background::handleEvent(SDL_Event *e){
+void Background::handleEvent(SDL_Event *e, bool *isScene){
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 
@@ -48,6 +48,7 @@ void Background::handleEvent(SDL_Event *e){
 
             x = e->button.x;
             y = e->button.y;
+
             for (int i = 0; i < 4; i += 1) {
                 char *name;
                 if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
@@ -66,6 +67,12 @@ void Background::handleEvent(SDL_Event *e){
                     setBackground(name);
                 }
             }
+
+            if (x >= backButtonRect.x && x <= backButtonRect.x + backButtonRect.w &&
+                y >= backButtonRect.y && y <= backButtonRect.y + backButtonRect.h) {
+                *isScene = false;
+            }
+
             break;
     }
 
@@ -83,6 +90,8 @@ void Background::handleEvent(SDL_Event *e){
         SDL_Rect rectGroup = { pos[i].x, pos[i].y, menuItemTexture.width, menuItemTexture.height };
         SDL_RenderCopy(gRenderer, menuItemTexture.texture, NULL, &rectGroup);
     }
+
+    backButton();
 
     renderText("Выберите фон", fontColor, SCREEN_WIDTH / 2 - 80, (SCREEN_HEIGHT / 3) - 50, font);
 
