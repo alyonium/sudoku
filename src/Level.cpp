@@ -4,7 +4,6 @@
 #include "Level.h"
 #include "GlobalVariables.h"
 #include <string>
-#include <iostream>
 
 void Level::renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font *font) {
     int width = SCREEN_WIDTH, height = SCREEN_HEIGHT;

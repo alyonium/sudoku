@@ -22,7 +22,6 @@ void Victory::handleEvent(SDL_Event *e, bool *scene) {
     const char *label = "Вернуться в главное меню";
     SDL_Surface *menuTexture;
 
-    bool hovered = false;
 
     SDL_Color color[2] = {menuColor, menuColorHover};
 
@@ -44,11 +43,8 @@ void Victory::handleEvent(SDL_Event *e, bool *scene) {
             y = e->button.y;
             if (x >= pos.x && x <= pos.x + pos.w &&
                 y >= pos.y && y <= pos.y + pos.h) {
-                if (!hovered) {
-                    hovered = true;
-                    SDL_FreeSurface(menuTexture);
-                    menuTexture = TTF_RenderUTF8_Blended(font, label, color[1]);
-                }
+                SDL_FreeSurface(menuTexture);
+                menuTexture = TTF_RenderUTF8_Blended(font, label, color[1]);
             }
             break;
 

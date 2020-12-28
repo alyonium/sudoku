@@ -15,7 +15,6 @@ class Game {
     Level level;
     Victory victory;
 public:
-    Game();
     void handleEvent(SDL_Event *event, bool *isScene);
 };
 #endif

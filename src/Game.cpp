@@ -7,10 +7,6 @@
 #include "Background.h"
 #include "Level.h"
 
-Game::Game() {
-
-}
-
 void Game::handleEvent(SDL_Event *event, bool *isScene) {
         while (SDL_PollEvent(event) != 0) {
             if (event->type == SDL_QUIT) {
