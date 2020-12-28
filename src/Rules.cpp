@@ -21,9 +21,20 @@ void Rules::handleEvent(SDL_Event *e, bool *isScene){
             *isScene = false;
             break;
         }
+        int x = e->button.x;
+        int y = e->button.y;
+
+        if (e->type == SDL_MOUSEBUTTONDOWN) {
+            if (x >= backButtonRect.x && x <= backButtonRect.x + backButtonRect.w &&
+                y >= backButtonRect.y && y <= backButtonRect.y + backButtonRect.h) {
+                *isScene = false;
+            }
+        }
     }
     SDL_SetRenderDrawColor(gRenderer, 248, 187, 208, 255);
     SDL_RenderClear(gRenderer);
+
+    backButton();
 
     renderText("Правила", fontColor, SCREEN_WIDTH / 2 - 55, SCREEN_HEIGHT / 4 - 20, font);
 

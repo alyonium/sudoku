@@ -114,6 +114,12 @@ public:
             }
         }
     }
+
+    void cleanCounter() {
+        for (int i = 0; i < 9; i++) {
+            counter[i] = 0;
+        }
+    }
 };
 
 Area areaRows[9];
@@ -124,6 +130,25 @@ int selectedCol = 0;
 int selectedRow = 0;
 
 const int CELL_SIZE = 50;
+
+void newGame() {
+    selectedCol = 0;
+    selectedRow = 0;
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            initialField[i][j].digit = 0;
+            initialField[i][j].validateCount = 0;
+            initialField[i][j].noEdit = false;
+
+            currentField[i][j].digit = 0;
+            currentField[i][j].validateCount = 0;
+            currentField[i][j].noEdit = false;
+        }
+        areaRows[i].cleanCounter();
+        areaCols[i].cleanCounter();
+        areaBoxes[i].cleanCounter();
+    }
+}
 
 bool checkUserWin() {
     for (int i = 0; i < 9; i++) {
@@ -246,8 +271,8 @@ void handleKey(SDL_Event &event, bool *isScene) {
 
         if (x >= backButtonRect.x && x <= backButtonRect.x + backButtonRect.w &&
             y >= backButtonRect.y && y <= backButtonRect.y + backButtonRect.h) {
+            newGame();
             *isScene = false;
-            addBackButton = true;
         }
     }
 
@@ -320,6 +345,7 @@ void handleKey(SDL_Event &event, bool *isScene) {
 
                 if (checkUserWin()) {
                     step = VICTORY;
+                    newGame();
                 }
 
                 break;
@@ -415,26 +441,99 @@ void Sudoku::readScheme() {
 }
 
 void Sudoku::fillCurrentField() {
-    for (int i = 0; i < 9; i++) {
 
-        int first = (rand() % 9) + 1;
-        int second = (rand() % 8) + 2;
-        int third = (rand() % 7) + 3;
+    switch(levelDifficulty) {
+        case LOW: {
+            for (int i = 0; i < 9; i++) {
 
-        for (int j = 0; j < 9; j++) {
-            if (initialField[i][j].digit != first
-                && initialField[i][j].digit != second
-                && initialField[i][j].digit != third) {
+                int first = (rand() % 9) + 1;
+                int second = (rand() % 8) + 2;
+                int third = (rand() % 7) + 3;
 
-                currentField[i][j].digit = initialField[i][j].digit;
-                currentField[i][j].noEdit = true;
+                for (int j = 0; j < 9; j++) {
+                    if (initialField[i][j].digit != first
+                        && initialField[i][j].digit != second
+                        && initialField[i][j].digit != third) {
 
-                int box = 3 * (i / 3) + (j / 3);
+                        currentField[i][j].digit = initialField[i][j].digit;
+                        currentField[i][j].noEdit = true;
 
-                areaRows[i].addDigit(currentField[i][j].digit, j, i);
-                areaCols[j].addDigit(currentField[i][j].digit, j, i);
-                areaBoxes[box].addDigit(currentField[i][j].digit, j, i);
+                        int box = 3 * (i / 3) + (j / 3);
+
+                        areaRows[i].addDigit(currentField[i][j].digit, j, i);
+                        areaCols[j].addDigit(currentField[i][j].digit, j, i);
+                        areaBoxes[box].addDigit(currentField[i][j].digit, j, i);
+                    }
+                }
             }
+            break;
+        }
+
+        case MIDDLE: {
+            for (int i = 0; i < 9; i++) {
+
+                int first = (rand() % 9) + 1;
+                int second = (rand() % 8) + 2;
+                int third = (rand() % 7) + 3;
+                int fourth = (rand() % 6) + 4;
+                int fifth = (rand() % 5) + 5;
+
+                for (int j = 0; j < 9; j++) {
+                    if (initialField[i][j].digit != first
+                        && initialField[i][j].digit != second
+                        && initialField[i][j].digit != third
+                        && initialField[i][j].digit != fourth
+                        && initialField[i][j].digit != fifth) {
+
+                        currentField[i][j].digit = initialField[i][j].digit;
+                        currentField[i][j].noEdit = true;
+
+                        int box = 3 * (i / 3) + (j / 3);
+
+                        areaRows[i].addDigit(currentField[i][j].digit, j, i);
+                        areaCols[j].addDigit(currentField[i][j].digit, j, i);
+                        areaBoxes[box].addDigit(currentField[i][j].digit, j, i);
+                    }
+                }
+            }
+            break;
+        }
+
+        case HARD: {
+            for (int i = 0; i < 9; i++) {
+
+                int first = (rand() % 9) + 1;
+                int second = (rand() % 8) + 2;
+                int third = (rand() % 7) + 3;
+                int fourth = (rand() % 6) + 4;
+                int fifth = (rand() % 5) + 5;
+                int sixth = (rand() % 4) + 6;
+                int seventh = (rand() % 3) + 7;
+                int eighth = (rand() % 2) + 8;
+
+                for (int j = 0; j < 9; j++) {
+                    if (initialField[i][j].digit != first
+                        && initialField[i][j].digit != second
+                        && initialField[i][j].digit != third
+                        && initialField[i][j].digit != fourth
+                        && initialField[i][j].digit != fifth
+                        && initialField[i][j].digit != sixth
+                        && initialField[i][j].digit != seventh
+                        && initialField[i][j].digit != eighth) {
+
+                        currentField[i][j].digit = initialField[i][j].digit;
+                        currentField[i][j].noEdit = true;
+
+                        int box = 3 * (i / 3) + (j / 3);
+
+                        areaRows[i].addDigit(currentField[i][j].digit, j, i);
+                        areaCols[j].addDigit(currentField[i][j].digit, j, i);
+                        areaBoxes[box].addDigit(currentField[i][j].digit, j, i);
+                    }
+                }
+            }
+            break;
         }
     }
+
 }

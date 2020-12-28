@@ -19,11 +19,11 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
             }
 
             if (step == BACKGROUND) {
-                background.handleEvent(event, isScene);
+                background.handleEvent(event);
             }
 
             if (step == LEVEL) {
-                level.handleEvent(event, isScene);
+                level.handleEvent(event);
                 if (step == SUDOKU) {
                     sudoku.readScheme();
                     sudoku.fillCurrentField();

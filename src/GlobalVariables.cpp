@@ -18,8 +18,7 @@ int fontSize = 35;
 int bigFontSize = 100;
 
 StepType step = BACKGROUND;
-
-LevelType levelDifficulty = EASY;
+LevelType levelDifficulty = LOW;
 
 Texture backgroundTexture;
 
@@ -37,19 +36,16 @@ CellData currentField[9][9];
 
 char *filename = "schemes/low.txt";
 
-SDL_Rect backButtonRect = { 10, 10, 30, 30 };
-SDL_Texture *backButtonTexture;
+SDL_Rect backButtonRect = { 10, 10,32, 32 };
 
 void backButton() {
-    int width = SCREEN_WIDTH;
-    int height = SCREEN_HEIGHT;
-    SDL_Surface *backButton;
-    backButton = SDL_CreateRGBSurface(0, 30, 30, 32, 0, 0, 0, 0);
-    SDL_FillRect(backButton, NULL, SDL_MapRGB(backButton->format, 255, 0, 0));
+    SDL_Surface *backButton = IMG_Load("img/backButton.png");
+    Texture backButtonTexture;
+    backButtonTexture.texture = SDL_CreateTextureFromSurface(gRenderer, backButton);
+    backButtonTexture.width = backButton->w;
+    backButtonTexture.height = backButton->h;
 
-    backButtonTexture = SDL_CreateTextureFromSurface(gRenderer, backButton);
-    SDL_QueryTexture(backButtonTexture, NULL, NULL, &width, &height);
-    SDL_RenderCopy(gRenderer, backButtonTexture, NULL, &backButtonRect);
+    SDL_QueryTexture(backButtonTexture.texture, NULL, NULL, &backButtonTexture.width, &backButtonTexture.height);
+    SDL_Rect backButtonRect = { 10, 10, backButtonTexture.width, backButtonTexture.height };
+    SDL_RenderCopy(gRenderer, backButtonTexture.texture, NULL, &backButtonRect);
 }
-
-bool addBackButton = false;

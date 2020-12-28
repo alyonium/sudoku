@@ -4,7 +4,6 @@
 #include "Level.h"
 #include "GlobalVariables.h"
 #include <string>
-#include <iostream>
 #include "Sudoku.h"
 
 void Level::renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font *font) {
@@ -18,7 +17,7 @@ void Level::renderText(const char *text, SDL_Color color, int xStart, int yStart
     SDL_FreeSurface(surfaceGroup);
 }
 
-void Level::handleEvent(SDL_Event *e, bool *isScene){
+void Level::handleEvent(SDL_Event *e){
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 
@@ -73,9 +72,10 @@ void Level::handleEvent(SDL_Event *e, bool *isScene){
                 if (x >= pos[i].x && x <= pos[i].x + pos[i].w &&
                     y >= pos[i].y && y <= pos[i].y + pos[i].h) {
                     selected[i] = true;
+                    step = SUDOKU;
                     if (i == 0) {
                         filename = "schemes/low.txt";
-                        levelDifficulty = EASY;
+                        levelDifficulty = LOW;
                     } else if(i == 1) {
                         filename = "schemes/middle.txt";
                         levelDifficulty = MIDDLE;
@@ -83,14 +83,7 @@ void Level::handleEvent(SDL_Event *e, bool *isScene){
                         filename = "schemes/hard.txt";
                         levelDifficulty = HARD;
                     }
-                    step = SUDOKU;
                 }
-            }
-
-
-            if (x >= backButtonRect.x && x <= backButtonRect.x + backButtonRect.w &&
-                y >= backButtonRect.y && y <= backButtonRect.y + backButtonRect.h) {
-                *isScene = false;
             }
 
             break;
@@ -110,8 +103,6 @@ void Level::handleEvent(SDL_Event *e, bool *isScene){
         SDL_Rect rectGroup = { pos[i].x, pos[i].y, menuItemTexture.width, menuItemTexture.height };
         SDL_RenderCopy(gRenderer, menuItemTexture.texture, NULL, &rectGroup);
     }
-
-    backButton();
 
     renderText("Выберите сложность", fontColor, SCREEN_WIDTH / 2 - 150, (SCREEN_HEIGHT / 3) - 50, font);
 

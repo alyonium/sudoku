@@ -211,6 +211,7 @@ int showMenu(SDL_Renderer *renderer) {
                             }
                         }
                     }
+
                     break;
 
                 case SDL_KEYDOWN:
@@ -237,11 +238,6 @@ int showMenu(SDL_Renderer *renderer) {
             SDL_QueryTexture(menuItemTexture.texture, NULL, NULL, &menuItemTexture.width, &menuItemTexture.height);
             SDL_Rect rectGroup = { pos[i].x, pos[i].y, menuItemTexture.width, menuItemTexture.height };
             SDL_RenderCopy(renderer, menuItemTexture.texture, NULL, &rectGroup);
-        }
-        if (addBackButton) {
-            //нужно добавить логику. при клике на "новая игра" процесс текущей игры обнуляется. при клике по этой кнопке - сохраняется. ниче лишнее не подсвечивается. все как и было.
-            std::cout << "add back menu" << std::endl;
-            backButton();
         }
     }
 }

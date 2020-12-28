@@ -8,7 +8,7 @@
 
 class Background {
 public:
-    void handleEvent(SDL_Event*, bool*);
+    void handleEvent(SDL_Event*);
     void renderText(const char*, SDL_Color, int, int, TTF_Font*);
 };
 

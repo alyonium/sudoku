@@ -8,7 +8,7 @@
 
 class Level {
 public:
-    void handleEvent(SDL_Event* e, bool*);
+    void handleEvent(SDL_Event* e);
     void renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font* font);
 };
 

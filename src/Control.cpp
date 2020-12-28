@@ -21,9 +21,22 @@ void Control::handleEvent(SDL_Event *e, bool *isScene){
             *isScene = false;
             break;
         }
+
+        int x = e->button.x;
+        int y = e->button.y;
+
+        if (e->type == SDL_MOUSEBUTTONDOWN) {
+            if (x >= backButtonRect.x && x <= backButtonRect.x + backButtonRect.w &&
+                y >= backButtonRect.y && y <= backButtonRect.y + backButtonRect.h) {
+                *isScene = false;
+            }
+        }
+
     }
     SDL_SetRenderDrawColor(gRenderer, 225, 190, 231, 255);
     SDL_RenderClear(gRenderer);
+
+    backButton();
 
     renderText("Управление", fontColor, SCREEN_WIDTH / 2 - 90, SCREEN_HEIGHT / 5 - 20, font);
 
