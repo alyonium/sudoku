@@ -24,7 +24,6 @@ private:
     int counter[9] = {0};// счетчик конкретных цифр в строке/клетке/столбце
 
 public:
-    Area() {};
 
     ~Area() {};
 
@@ -131,7 +130,7 @@ int selectedRow = 0;
 
 const int CELL_SIZE = 50;
 
-void newGame() {
+void Sudoku::newGame() {
     selectedCol = 0;
     selectedRow = 0;
     for (int i = 0; i < 9; i++) {
@@ -150,7 +149,7 @@ void newGame() {
     }
 }
 
-bool checkUserWin() {
+bool Sudoku::checkUserWin() {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
             if (currentField[i][j].digit == 0) {
@@ -161,7 +160,7 @@ bool checkUserWin() {
     return true;
 }
 
-void drawGrid(SDL_Renderer *gRenderer) {
+void Sudoku::drawGrid(SDL_Renderer *gRenderer) {
     SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
     SDL_RenderClear(gRenderer);
 
@@ -180,7 +179,7 @@ void drawGrid(SDL_Renderer *gRenderer) {
     }
 }
 
-void drawSelection(SDL_Renderer *gRenderer) {
+void Sudoku::drawSelection(SDL_Renderer *gRenderer) {
     int horizontalShift = selectedCol * CELL_SIZE;
     int verticalShift = selectedRow * CELL_SIZE;
 
@@ -206,7 +205,7 @@ void drawSelection(SDL_Renderer *gRenderer) {
     SDL_RenderFillRect(gRenderer, &select);
 }
 
-void drawInvalidCells(SDL_Renderer *gRenderer) {
+void Sudoku::drawInvalidCells(SDL_Renderer *gRenderer) {
     SDL_SetRenderDrawColor(gRenderer, 244, 143, 177, 255);
 
     for (int i = 0; i < 9; i++) {
@@ -238,7 +237,7 @@ void drawInvalidCells(SDL_Renderer *gRenderer) {
     }
 }
 
-void drawDigit(SDL_Renderer *gRenderer) {
+void Sudoku::drawDigit(SDL_Renderer *gRenderer) {
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
 
@@ -263,7 +262,7 @@ void drawDigit(SDL_Renderer *gRenderer) {
     }
 }
 
-void handleKey(SDL_Event &event, bool *isScene) {
+void Sudoku::handleKey(SDL_Event &event, bool *isScene) {
 
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         int x = event.button.x;
@@ -376,7 +375,7 @@ void handleKey(SDL_Event &event, bool *isScene) {
     }
 }
 
-Sudoku::Sudoku(TTF_Font *font) {
+Sudoku::Sudoku() {
     gTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_TARGET, 9 * CELL_SIZE + 2,
                                  9 * CELL_SIZE + 2); // +2 на бордеры
     SDL_Color color = {30, 50, 56};

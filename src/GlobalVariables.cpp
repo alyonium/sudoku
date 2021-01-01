@@ -22,15 +22,6 @@ LevelType levelDifficulty = LOW;
 
 Texture backgroundTexture;
 
-void setBackground(char *name) {
-    SDL_Surface *image;
-    const char* pictureName = name;
-    image = IMG_Load(pictureName);
-    backgroundTexture.width = image->w;
-    backgroundTexture.height = image->h;
-    backgroundTexture.texture = SDL_CreateTextureFromSurface(gRenderer, image);
-};
-
 CellData initialField[9][9];
 CellData currentField[9][9];
 

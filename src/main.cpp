@@ -14,7 +14,7 @@ using namespace std;
 
 SDL_Window* mainWindow;
 
-int SPLASH_DELAY = 500;
+int SPLASH_DELAY = 2000;
 
 const int MENU_NUMBERS = 4;
 

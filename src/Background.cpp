@@ -5,6 +5,15 @@
 #include <string>
 #include <SDL_image.h>
 
+void Background::setBackground(char *name) {
+    SDL_Surface *image;
+    const char* pictureName = name;
+    image = IMG_Load(pictureName);
+    backgroundTexture.width = image->w;
+    backgroundTexture.height = image->h;
+    backgroundTexture.texture = SDL_CreateTextureFromSurface(gRenderer, image);
+};
+
 void Background::renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font *font) {
     int width = SCREEN_WIDTH, height = SCREEN_HEIGHT;
     SDL_Surface *surfaceGroup =TTF_RenderUTF8_Blended(font, text, color);

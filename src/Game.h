@@ -11,7 +11,7 @@
 #define SUDOKU_GAME_H
 class Game {
     Level level;
-    Sudoku sudoku = Sudoku(font);
+    Sudoku sudoku;
     Background background;
     Victory victory;
 public:

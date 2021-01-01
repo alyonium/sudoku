@@ -39,8 +39,6 @@ extern LevelType levelDifficulty;
 
 extern Texture backgroundTexture;
 
-void setBackground(char *name);
-
 struct CellData {
     int digit = 0; 	//текущая цифра в клетке, 0 для пустой
     int validateCount = 0; // 0 если решение валидное
