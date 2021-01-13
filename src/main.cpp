@@ -138,7 +138,7 @@ int showMenu(SDL_Renderer *renderer) {
 
         for (int i = 0; i < MENU_NUMBERS; ++i) {
             if (selected[i] && i == 0) { //запуск игры
-                game.handleEvent(&event, &selected[i]);
+                game.gameProcess(&event, &selected[i]);
                 break;
             }
 

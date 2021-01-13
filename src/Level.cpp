@@ -17,7 +17,7 @@ void Level::renderText(const char *text, SDL_Color color, int xStart, int yStart
     SDL_FreeSurface(surfaceGroup);
 }
 
-void Level::handleEvent(SDL_Event *e){
+void Level::handleEvent(SDL_Event *e, bool *scene){
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 

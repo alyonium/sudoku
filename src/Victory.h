@@ -1,14 +1,15 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "Texture.h"
+#include "Menu.h"
 
 #ifndef SUDOKU_VICTORY_H
 #define SUDOKU_VICTORY_H
 
-class Victory {
+class Victory : public Menu {
 public:
-    void handleEvent(SDL_Event* e, bool *scene);
-    void renderText(const char *text, SDL_Color color, int xStart, int yStart, TTF_Font* font);
+    void handleEvent(SDL_Event* e, bool *scene) override;
+    void renderText(const char *, SDL_Color, int, int, TTF_Font*) override;
 };
 
 

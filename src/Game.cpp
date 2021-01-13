@@ -7,7 +7,7 @@
 #include "Background.h"
 #include "Level.h"
 
-void Game::handleEvent(SDL_Event *event, bool *isScene) {
+void Game::gameProcess(SDL_Event *event, bool *isScene) {
         while (SDL_PollEvent(event) != 0) {
             if (event->type == SDL_QUIT) {
                 break;
@@ -19,11 +19,11 @@ void Game::handleEvent(SDL_Event *event, bool *isScene) {
             }
 
             if (step == BACKGROUND) {
-                background.handleEvent(event);
+                background.handleEvent(event, isScene);
             }
 
             if (step == LEVEL) {
-                level.handleEvent(event);
+                level.handleEvent(event, isScene);
                 if (step == SUDOKU) {
                     sudoku.readScheme();
                     sudoku.fillCurrentField();

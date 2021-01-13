@@ -20,7 +20,7 @@ extern TTF_Font* bigFont;
 extern int fontSize;
 extern int bigFontSize;
 
-extern enum StepType {
+enum StepType {
     BACKGROUND,
     LEVEL,
     SUDOKU,
@@ -29,7 +29,7 @@ extern enum StepType {
 
 extern StepType step;
 
-extern enum LevelType {
+enum LevelType {
     LOW,
     MIDDLE,
     HARD

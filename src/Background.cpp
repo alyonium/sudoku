@@ -25,7 +25,7 @@ void Background::renderText(const char *text, SDL_Color color, int xStart, int y
     SDL_FreeSurface(surfaceGroup);
 }
 
-void Background::handleEvent(SDL_Event *e) {
+void Background::handleEvent(SDL_Event *e, bool *isScene) {
     int width = SCREEN_WIDTH;
     int height = SCREEN_HEIGHT;
 

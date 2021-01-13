@@ -15,6 +15,6 @@ class Game {
     Background background;
     Victory victory;
 public:
-    void handleEvent(SDL_Event *event, bool *isScene);
+    void gameProcess(SDL_Event *event, bool *isScene);
 };
 #endif
