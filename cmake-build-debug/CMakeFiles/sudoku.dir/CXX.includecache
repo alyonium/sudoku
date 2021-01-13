@@ -14,20 +14,6 @@ SDL_ttf.h
 Texture.h
 ../src/Texture.h
 
-/Users/alyonium/Desktop/newSudoku/src/Background.cpp
-Background.h
-/Users/alyonium/Desktop/newSudoku/src/Background.h
-SDL.h
-/Users/alyonium/Desktop/newSudoku/src/SDL.h
-GlobalVariables.h
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
-SDL_ttf.h
-/Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
-string
--
-SDL_image.h
--
-
 /Users/alyonium/Desktop/newSudoku/src/Background.h
 SDL.h
 /Users/alyonium/Desktop/newSudoku/src/SDL.h
@@ -35,18 +21,8 @@ SDL_ttf.h
 /Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
 Texture.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
-
-/Users/alyonium/Desktop/newSudoku/src/Control.cpp
-Control.h
-/Users/alyonium/Desktop/newSudoku/src/Control.h
-SDL.h
-/Users/alyonium/Desktop/newSudoku/src/SDL.h
-GlobalVariables.h
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
-SDL_ttf.h
-/Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
-string
--
+Menu.h
+/Users/alyonium/Desktop/newSudoku/src/Menu.h
 
 /Users/alyonium/Desktop/newSudoku/src/Control.h
 SDL.h
@@ -55,6 +31,8 @@ SDL_ttf.h
 /Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
 Texture.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
+Menu.h
+/Users/alyonium/Desktop/newSudoku/src/Menu.h
 
 /Users/alyonium/Desktop/newSudoku/src/Game.cpp
 Game.h
@@ -92,14 +70,6 @@ Level.h
 Victory.h
 /Users/alyonium/Desktop/newSudoku/src/Victory.h
 
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.cpp
-GlobalVariables.h
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
-SDL_image.h
-/Users/alyonium/Desktop/newSudoku/src/SDL_image.h
-Texture.h
-/Users/alyonium/Desktop/newSudoku/src/Texture.h
-
 /Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
 SDL.h
 /Users/alyonium/Desktop/newSudoku/src/SDL.h
@@ -131,17 +101,13 @@ SDL_ttf.h
 /Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
 Texture.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
+Menu.h
+/Users/alyonium/Desktop/newSudoku/src/Menu.h
 
-/Users/alyonium/Desktop/newSudoku/src/Rules.cpp
-Rules.h
-/Users/alyonium/Desktop/newSudoku/src/Rules.h
-SDL.h
-/Users/alyonium/Desktop/newSudoku/src/SDL.h
-GlobalVariables.h
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
+/Users/alyonium/Desktop/newSudoku/src/Menu.h
 SDL_ttf.h
 /Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
-string
+SDL.h
 -
 
 /Users/alyonium/Desktop/newSudoku/src/Rules.h
@@ -151,6 +117,8 @@ SDL_ttf.h
 /Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
 Texture.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
+Menu.h
+/Users/alyonium/Desktop/newSudoku/src/Menu.h
 
 /Users/alyonium/Desktop/newSudoku/src/Sudoku.cpp
 SDL.h
@@ -180,18 +148,6 @@ SDL_ttf.h
 SDL.h
 -
 
-/Users/alyonium/Desktop/newSudoku/src/Victory.cpp
-Victory.h
-/Users/alyonium/Desktop/newSudoku/src/Victory.h
-SDL.h
-/Users/alyonium/Desktop/newSudoku/src/SDL.h
-GlobalVariables.h
-/Users/alyonium/Desktop/newSudoku/src/GlobalVariables.h
-SDL_ttf.h
-/Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
-string
--
-
 /Users/alyonium/Desktop/newSudoku/src/Victory.h
 SDL.h
 /Users/alyonium/Desktop/newSudoku/src/SDL.h
@@ -199,6 +155,8 @@ SDL_ttf.h
 /Users/alyonium/Desktop/newSudoku/src/SDL_ttf.h
 Texture.h
 /Users/alyonium/Desktop/newSudoku/src/Texture.h
+Menu.h
+/Users/alyonium/Desktop/newSudoku/src/Menu.h
 
 /Users/alyonium/Desktop/newSudoku/src/main.cpp
 SDL.h
@@ -856,17 +814,5 @@ SDL.h
 begin_code.h
 /usr/local/include/SDL2/begin_code.h
 close_code.h
-/usr/local/include/SDL2/close_code.h
-
-/usr/local/include/SDL2/SDL_version.h
-SDL_stdinc.h
-/usr/local/include/SDL2/SDL_stdinc.h
-begin_code.h
-/usr/local/include/SDL2/begin_code.h
-close_code.h
-/usr/local/include/SDL2/close_code.h
-
-/usr/local/include/SDL2/begin_code.h
-
 /usr/local/include/SDL2/close_code.h
 

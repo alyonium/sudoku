@@ -8,7 +8,7 @@
 
 class Level : public Menu{
 public:
-    void handleEvent(SDL_Event* e, bool *scene) override;
+    void handleEvent(SDL_Event* e) override;
     void renderText(const char *, SDL_Color, int, int, TTF_Font*) override;
 };
 

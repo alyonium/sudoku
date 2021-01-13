@@ -10,6 +10,7 @@
 #ifndef SUDOKU_GAME_H
 #define SUDOKU_GAME_H
 class Game {
+private:
     Level level;
     Sudoku sudoku;
     Background background;

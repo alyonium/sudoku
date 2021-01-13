@@ -6,6 +6,10 @@
 class Sudoku {
 public:
     Sudoku();
+    void readScheme();
+    void fillCurrentField();
+    void draw(SDL_Event, bool*);
+private:
     void newGame();
     bool checkUserWin();
     void drawGrid(SDL_Renderer*);
@@ -13,8 +17,5 @@ public:
     void drawInvalidCells(SDL_Renderer*);
     void drawDigit(SDL_Renderer*);
     void handleKey(SDL_Event&, bool*);
-    void draw(SDL_Event, bool*);
-    void readScheme();
-    void fillCurrentField();
 };
 #endif

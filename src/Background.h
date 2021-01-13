@@ -8,7 +8,7 @@
 
 class Background : public Menu {
 public:
-    void handleEvent(SDL_Event*, bool *scene) override;
+    void handleEvent(SDL_Event*) override;
     void renderText(const char*, SDL_Color, int, int, TTF_Font*) override;
     void setBackground(char*);
 };

@@ -4,6 +4,7 @@
 CMakeFiles/sudoku.dir/src/Background.cpp.o: ../src/Background.cpp
 CMakeFiles/sudoku.dir/src/Background.cpp.o: ../src/Background.h
 CMakeFiles/sudoku.dir/src/Background.cpp.o: ../src/GlobalVariables.h
+CMakeFiles/sudoku.dir/src/Background.cpp.o: ../src/Menu.h
 CMakeFiles/sudoku.dir/src/Background.cpp.o: ../src/Texture.h
 CMakeFiles/sudoku.dir/src/Background.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/sudoku.dir/src/Background.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
@@ -57,6 +58,7 @@ CMakeFiles/sudoku.dir/src/Background.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
 CMakeFiles/sudoku.dir/src/Control.cpp.o: ../src/Control.cpp
 CMakeFiles/sudoku.dir/src/Control.cpp.o: ../src/Control.h
 CMakeFiles/sudoku.dir/src/Control.cpp.o: ../src/GlobalVariables.h
+CMakeFiles/sudoku.dir/src/Control.cpp.o: ../src/Menu.h
 CMakeFiles/sudoku.dir/src/Control.cpp.o: ../src/Texture.h
 CMakeFiles/sudoku.dir/src/Control.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/sudoku.dir/src/Control.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
@@ -111,6 +113,7 @@ CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Game.cpp
 CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Game.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/GlobalVariables.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Level.h
+CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Menu.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Sudoku.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Texture.h
 CMakeFiles/sudoku.dir/src/Game.cpp.o: ../src/Victory.h
@@ -217,6 +220,7 @@ CMakeFiles/sudoku.dir/src/GlobalVariables.cpp.o: /usr/local/include/SDL2/close_c
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/GlobalVariables.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Level.cpp
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Level.h
+CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Menu.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Sudoku.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: ../src/Texture.h
 CMakeFiles/sudoku.dir/src/Level.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
@@ -268,6 +272,7 @@ CMakeFiles/sudoku.dir/src/Level.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/S
 CMakeFiles/sudoku.dir/src/Level.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
 
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/GlobalVariables.h
+CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/Menu.h
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/Rules.cpp
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/Rules.h
 CMakeFiles/sudoku.dir/src/Rules.cpp.o: ../src/Texture.h
@@ -372,6 +377,7 @@ CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/
 CMakeFiles/sudoku.dir/src/Sudoku.cpp.o: /usr/local/include/SDL2/SDL_ttf.h
 
 CMakeFiles/sudoku.dir/src/Victory.cpp.o: ../src/GlobalVariables.h
+CMakeFiles/sudoku.dir/src/Victory.cpp.o: ../src/Menu.h
 CMakeFiles/sudoku.dir/src/Victory.cpp.o: ../src/Texture.h
 CMakeFiles/sudoku.dir/src/Victory.cpp.o: ../src/Victory.cpp
 CMakeFiles/sudoku.dir/src/Victory.cpp.o: ../src/Victory.h
@@ -428,6 +434,7 @@ CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/Control.h
 CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/Game.h
 CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/GlobalVariables.h
 CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/Level.h
+CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/Menu.h
 CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/Rules.h
 CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/Sudoku.h
 CMakeFiles/sudoku.dir/src/main.cpp.o: ../src/Texture.h

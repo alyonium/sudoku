@@ -71,7 +71,7 @@ public:
         }
     }
 
-    void addDigit(int &digit, int &x, int &y) {
+    void addDigit(int &digit, int &x, int &y){
 
         counter[digit - 1]++; //увеличиваем счетчик кол-ва одинаковых цифр в "окружении" введенной цифры
 
